@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Guild Wars 2 Player Guide</title>
+  <rect width="64" height="64" rx="12" fill="#162c24"/>
+  <g fill="none" stroke="#f6f4e8" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M20 17h-7a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h7v-8h-5"/>
+    <path d="m25 17 4 16 5-10 5 10 4-16"/>
+    <path d="M48 20c0-5 9-5 9 0 0 5-9 6-9 13h9"/>
+  </g>
+  <path d="M10 42c8-2 15-1 22 3 7-4 14-5 22-3v11c-8-2-15-1-22 3-7-4-14-5-22-3Zm22 3v11" fill="none" stroke="#dce8ac" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

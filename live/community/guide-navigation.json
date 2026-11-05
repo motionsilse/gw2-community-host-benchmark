@@ -1,0 +1,1486 @@
+{
+  "sources": {
+    "nav-data.js": "37d14b73ba29662499365b44818959a69ae97ddd611bb4d10b3840f6344667d1",
+    "nav-data.en.js": "d37dc9627bb98fde6e435028275af21fdd975d456a7e50e61045d56fa853b32a"
+  },
+  "navigation": {
+    "ko": {
+      "start": {
+        "label": "시작하기",
+        "labelEn": "Start Here",
+        "href": "/start/first-30-minutes/",
+        "desc": "로그인 직후부터 80레벨 전까지. 처음 막히는 순간마다 답합니다.",
+        "groups": [
+          {
+            "key": "intro",
+            "label": "게임 소개",
+            "href": "/start/intro/",
+            "desc": "다른 MMO와 무엇이 다른지",
+            "pages": [
+              {
+                "label": "길드워2란 어떤 게임인가",
+                "href": "/start/account/what-is-gw2/"
+              },
+              {
+                "label": "길드워2의 특징",
+                "href": "/start/intro/features/"
+              }
+            ]
+          },
+          {
+            "key": "account",
+            "label": "계정 & 구매",
+            "href": "/start/account/",
+            "desc": "설치 전에 알아야 할 것들",
+            "pages": [
+              {
+                "label": "ArenaNet 계정 vs Steam 계정",
+                "href": "/start/account/anet-vs-steam/"
+              },
+              {
+                "label": "무료로 얼마나 즐길 수 있나",
+                "href": "/start/account/free-to-play/"
+              },
+              {
+                "label": "확장팩 구매 순서 추천",
+                "href": "/start/account/expansion-order/"
+              },
+              {
+                "label": "리빙 월드란 무엇인가",
+                "href": "/start/account/living-world/"
+              },
+              {
+                "label": "레벨 80 부스트: 써야 하나",
+                "href": "/start/account/level-boost/"
+              }
+            ]
+          },
+          {
+            "key": "character",
+            "label": "첫 캐릭터",
+            "href": "/start/character/",
+            "desc": "직업과 종족, 나중에 바꿀 수 있는 것들",
+            "pages": [
+              {
+                "label": "서버 선택과 아이디",
+                "href": "/start/character/server-id/"
+              },
+              {
+                "label": "캐릭터 생성 가이드",
+                "href": "/start/character/creation/"
+              },
+              {
+                "label": "첫 직업 고르기",
+                "href": "/start/character/first-profession/"
+              }
+            ]
+          },
+          {
+            "key": "settings",
+            "label": "조작 & 세팅",
+            "href": "/start/settings/",
+            "desc": "마우스 조작, 카메라, 키바인드",
+            "pages": [
+              {
+                "label": "조작·전투 설정",
+                "href": "/start/settings/controls/"
+              },
+              {
+                "label": "그래픽·UI·언어 설정",
+                "href": "/start/settings/graphics/"
+              }
+            ]
+          },
+          {
+            "key": "ui",
+            "label": "UI & 화면 읽기",
+            "href": "/start/ui/",
+            "desc": "화면이 뭔지 모를 때",
+            "pages": [
+              {
+                "label": "화면 구역 전체 해설",
+                "href": "/start/ui/layout/"
+              },
+              {
+                "label": "히어로 패널, 인벤토리, 메뉴",
+                "href": "/start/ui/panels/"
+              },
+              {
+                "label": "월드 맵과 미니맵 읽기",
+                "href": "/start/ui/map/"
+              },
+              {
+                "label": "채팅, 핑, 커뮤니케이션",
+                "href": "/start/ui/chat/"
+              }
+            ]
+          },
+          {
+            "key": "first30",
+            "label": "처음 30분",
+            "href": "/start/first-30-minutes/",
+            "desc": "지금 당장 시작하려면",
+            "pages": [
+              {
+                "label": "지금 당장 시작: 처음 30분",
+                "href": "/start/first-30-minutes/",
+                "featured": true
+              },
+              {
+                "label": "로그인-to-플레이 체크리스트",
+                "href": "/start/first-30-minutes/checklist/"
+              },
+              {
+                "label": "상점, 구매, 판매",
+                "href": "/start/first-30-minutes/vendors/"
+              }
+            ]
+          },
+          {
+            "key": "leveling",
+            "label": "레벨 올리기",
+            "href": "/start/leveling/",
+            "desc": "80 전까지 뭘 해야 하나",
+            "pages": [
+              {
+                "label": "레벨 올리면서 뭘 해야 하나",
+                "href": "/start/leveling/what-to-do/"
+              },
+              {
+                "label": "맵 완료(Map Completion)의 역할",
+                "href": "/start/leveling/map-completion/"
+              },
+              {
+                "label": "하트, 웨이포인트, 비스타",
+                "href": "/start/leveling/map-objectives/"
+              }
+            ]
+          }
+        ]
+      },
+      "combat": {
+        "label": "전투 & 용어",
+        "labelEn": "Combat & Terms",
+        "href": "/combat/basics/boons-conditions/",
+        "desc": "스킬 구조부터 캐릭터가 약한 이유까지. 전투 언어를 쌓습니다.",
+        "groups": [
+          {
+            "key": "basics",
+            "label": "전투 기초",
+            "href": "/combat/basics/",
+            "desc": "모든 직업에 공통되는 전투 언어",
+            "pages": [
+              {
+                "label": "스킬바와 무기 스킬 구조",
+                "href": "/combat/basics/skill-bar/"
+              },
+              {
+                "label": "회피, 다운 상태, 부활",
+                "href": "/combat/basics/dodge/"
+              },
+              {
+                "label": "버프(Boon)와 디버프(Condition)",
+                "href": "/combat/basics/boons-conditions/"
+              },
+              {
+                "label": "CC와 브레이크바",
+                "href": "/combat/basics/cc-breakbar/"
+              },
+              {
+                "label": "콤보 필드와 피니셔",
+                "href": "/combat/basics/combo/"
+              },
+              {
+                "label": "타겟팅, 포지셔닝, 살아남기",
+                "href": "/combat/basics/positioning/"
+              },
+              {
+                "label": "이동 속도 시스템",
+                "href": "/combat/basics/movement-speed/"
+              }
+            ]
+          },
+          {
+            "key": "build",
+            "label": "빌드 기초",
+            "href": "/combat/build/",
+            "desc": "왜 약한가, 어떻게 강해지나",
+            "pages": [
+              {
+                "label": "왜 내 캐릭터가 약한가",
+                "href": "/combat/build/why-weak/",
+                "featured": true
+              },
+              {
+                "label": "스탯과 스탯이 바꾸는 것들",
+                "href": "/combat/build/stats/"
+              },
+              {
+                "label": "특성(Trait)과 빌드 패널",
+                "href": "/combat/build/traits/"
+              },
+              {
+                "label": "무기 역할과 첫인상",
+                "href": "/combat/build/weapons/"
+              },
+              {
+                "label": "힐, 유틸리티, 엘리트 스킬",
+                "href": "/combat/build/utility-skills/"
+              }
+            ]
+          },
+          {
+            "key": "reference",
+            "label": "빠른 참조",
+            "href": "/combat/reference/",
+            "desc": "버프/디버프/용어 정리",
+            "pages": [
+              {
+                "label": "버프(Boon) 목록과 효과",
+                "href": "/combat/reference/boons/"
+              },
+              {
+                "label": "디버프(Condition) 목록과 효과",
+                "href": "/combat/reference/conditions/"
+              },
+              {
+                "label": "길드워2 용어 사전",
+                "href": "/combat/reference/glossary/"
+              }
+            ]
+          }
+        ]
+      },
+      "progression": {
+        "label": "성장 & 장비",
+        "labelEn": "Progression & Gear",
+        "href": "/progression/gear/tiers/",
+        "desc": "80 도달 이후 공황 해소. 첫 목표부터 어센디드까지.",
+        "groups": [
+          {
+            "key": "first-week",
+            "label": "레벨 80 첫째 주",
+            "href": "/progression/first-week/",
+            "desc": "80 도달 직후 뭘 해야 하나",
+            "pages": [
+              {
+                "label": "레벨 80 도달 직후",
+                "href": "/progression/first-week/just-hit-80/",
+                "featured": true
+              },
+              {
+                "label": "히어로 포인트와 엘리트 특성화",
+                "href": "/progression/first-week/hero-points/"
+              },
+              {
+                "label": "복귀 플레이어 체크리스트",
+                "href": "/progression/first-week/returning-player/"
+              }
+            ]
+          },
+          {
+            "key": "routine",
+            "label": "일과 & 주간 루틴",
+            "href": "/progression/routine/",
+            "desc": "매일, 매주 뭘 하면 되나",
+            "pages": [
+              {
+                "label": "위자드 볼트 기초",
+                "href": "/progression/routine/wizards-vault/"
+              },
+              {
+                "label": "일일, 주간, 리셋 데이",
+                "href": "/progression/routine/dailies/"
+              },
+              {
+                "label": "초보자를 위한 부담 없는 루틴",
+                "href": "/progression/routine/low-stress/"
+              },
+              {
+                "label": "무시해도 되는 것들",
+                "href": "/progression/routine/can-ignore/"
+              }
+            ]
+          },
+          {
+            "key": "gear",
+            "label": "장비 성장",
+            "href": "/progression/gear/",
+            "desc": "엑조틱부터 어센디드까지",
+            "pages": [
+              {
+                "label": "장비 등급과 첫 목표",
+                "href": "/progression/gear/tiers/"
+              },
+              {
+                "label": "첫 엑조틱 세트 구하기",
+                "href": "/progression/gear/first-exotic/"
+              },
+              {
+                "label": "겨울딸기 파밍 가이드",
+                "href": "/progression/gear/winterberry/"
+              },
+              {
+                "label": "엑조틱에서 어센디드로",
+                "href": "/progression/gear/exotic-to-ascended/"
+              },
+              {
+                "label": "어센디드 획득 루트 비교",
+                "href": "/progression/gear/ascended-routes/"
+              },
+              {
+                "label": "스탯 변경과 업그레이드",
+                "href": "/progression/gear/stat-swap/"
+              }
+            ]
+          },
+          {
+            "key": "masteries",
+            "label": "마스터리 가이드",
+            "href": "/progression/systems/masteries/",
+            "desc": "경험치와 마스터리 포인트로 해금하는 계정 성장",
+            "pages": [
+              {
+                "label": "계정 성장의 핵심: 마스터리",
+                "href": "/progression/systems/masteries/"
+              },
+              {
+                "label": "Central Tyria",
+                "href": "/progression/systems/masteries/central-tyria/"
+              },
+              {
+                "label": "Heart of Thorns",
+                "href": "/progression/systems/masteries/heart-of-thorns/"
+              },
+              {
+                "label": "Path of Fire",
+                "href": "/progression/systems/masteries/path-of-fire/"
+              },
+              {
+                "label": "Icebrood Saga",
+                "href": "/progression/systems/masteries/icebrood-saga/"
+              },
+              {
+                "label": "End of Dragons",
+                "href": "/progression/systems/masteries/end-of-dragons/"
+              },
+              {
+                "label": "Secrets of the Obscure",
+                "href": "/progression/systems/masteries/secrets-of-the-obscure/"
+              },
+              {
+                "label": "Janthir Wilds",
+                "href": "/progression/systems/masteries/janthir-wilds/"
+              },
+              {
+                "label": "Visions of Eternity",
+                "href": "/progression/systems/masteries/visions-of-eternity/"
+              }
+            ]
+          },
+          {
+            "key": "account-systems",
+            "label": "계정 성장 시스템",
+            "href": "/progression/systems/",
+            "desc": "마운트, 제이드 봇, 홈스테드",
+            "pages": [
+              {
+                "label": "마운트: 언제, 어떻게",
+                "href": "/progression/systems/mounts/"
+              },
+              {
+                "label": "제이드 봇",
+                "href": "/progression/systems/jade-bot/"
+              },
+              {
+                "label": "홈스테드",
+                "href": "/progression/systems/homestead/"
+              }
+            ]
+          }
+        ]
+      },
+      "economy": {
+        "label": "계정 & 경제",
+        "labelEn": "Account & Economy",
+        "href": "/economy/inventory/storage/",
+        "desc": "가방 정리, 거래소, 젬스토어. 골드 걱정 없이 시작하는 법.",
+        "groups": [
+          {
+            "key": "inventory",
+            "label": "가방 정리",
+            "href": "/economy/inventory/",
+            "desc": "뭘 버리고 뭘 보관하나",
+            "pages": [
+              {
+                "label": "은행, 재료 창고, 공유 보관함",
+                "href": "/economy/inventory/storage/"
+              },
+              {
+                "label": "어디서든 은행, 거래소 편하게 쓰기",
+                "href": "/economy/inventory/access/"
+              },
+              {
+                "label": "버려도 되는 아이템 목록",
+                "href": "/economy/inventory/clutter-list/"
+              },
+              {
+                "label": "분해 키트 종류와 사용법",
+                "href": "/economy/inventory/salvage-kits/"
+              }
+            ]
+          },
+          {
+            "key": "trading",
+            "label": "거래 & 화폐",
+            "href": "/economy/trading/",
+            "desc": "거래소, 골드, 젬, 젬스토어",
+            "pages": [
+              {
+                "label": "거래소(Trading Post) 기초",
+                "href": "/economy/trading/trading-post/"
+              },
+              {
+                "label": "지갑과 주요 화폐 종류",
+                "href": "/economy/trading/currencies/"
+              },
+              {
+                "label": "맵 화폐와 어센디드 장신구",
+                "href": "/economy/trading/map-currencies/"
+              },
+              {
+                "label": "젬스토어 기초와 추천 아이템",
+                "href": "/economy/gemstore/basics/"
+              },
+              {
+                "label": "저렴한 아웃핏 얻는 법",
+                "href": "/economy/gemstore/free-outfits/"
+              },
+              {
+                "label": "우편함과 수신함",
+                "href": "/economy/trading/mail/"
+              },
+              {
+                "label": "골드, 어디서 어떻게 버나",
+                "href": "/economy/trading/gold-farming/"
+              }
+            ]
+          },
+          {
+            "key": "crafting",
+            "label": "크래프팅 기초",
+            "href": "/economy/crafting/",
+            "desc": "언제 시작하고 어떻게 올리나",
+            "pages": [
+              {
+                "label": "크래프팅은 언제 시작하나",
+                "href": "/economy/crafting/when-to-start/"
+              },
+              {
+                "label": "크래프팅 레벨업 준비",
+                "href": "/economy/crafting/leveling/"
+              },
+              {
+                "label": "채집 도구와 재료 관리",
+                "href": "/economy/crafting/gathering/"
+              }
+            ]
+          },
+          {
+            "key": "tools",
+            "label": "외부 도구",
+            "href": "/economy/tools/",
+            "desc": "길드워2Efficiency, 위키 활용법",
+            "pages": [
+              {
+                "label": "API 키 발급 방법",
+                "href": "/economy/tools/api-key/"
+              },
+              {
+                "label": "API 활용법 (위키·이피전시·TacO)",
+                "href": "/economy/tools/gw2efficiency/"
+              },
+              {
+                "label": "위키 빠르게 검색하는 법",
+                "href": "/economy/tools/wiki/"
+              },
+              {
+                "label": "Steam 계정 FAQ",
+                "href": "/economy/tools/steam-faq/"
+              }
+            ]
+          }
+        ]
+      },
+      "content": {
+        "label": "컨텐츠 & 파티",
+        "labelEn": "Content & Groups",
+        "href": "/content/open-world/events/",
+        "desc": "오픈 월드부터 레이드까지. 다른 플레이어와 함께하는 법.",
+        "groups": [
+          {
+            "key": "open-world",
+            "label": "오픈 월드",
+            "href": "/content/open-world/",
+            "desc": "혼자서도 함께해도 즐기는 방법",
+            "pages": [
+              {
+                "label": "다이나믹 이벤트란",
+                "href": "/content/open-world/events/"
+              },
+              {
+                "label": "메타 이벤트란",
+                "href": "/content/open-world/meta-events/"
+              },
+              {
+                "label": "월드 보스: 찾기와 타이머",
+                "href": "/content/open-world/world-bosses/"
+              },
+              {
+                "label": "커맨더와 컨텐츠 찾기",
+                "href": "/content/open-world/commander/"
+              },
+              {
+                "label": "점핑 퍼즐과 숨겨진 모험",
+                "href": "/content/open-world/jumping-puzzles/"
+              }
+            ]
+          },
+          {
+            "key": "groups",
+            "label": "파티 & 길드",
+            "href": "/content/groups/",
+            "desc": "LFG, 파티, 길드 합류",
+            "pages": [
+              {
+                "label": "파티와 스쿼드 구조",
+                "href": "/content/groups/party-squad/"
+              },
+              {
+                "label": "LFG와 그룹 소통",
+                "href": "/content/groups/lfg/"
+              },
+              {
+                "label": "길드: 찾기와 활용",
+                "href": "/content/groups/guild/"
+              }
+            ]
+          },
+          {
+            "key": "instanced",
+            "label": "인스턴스 PvE",
+            "href": "/content/instanced/overview/",
+            "desc": "던전, 프랙탈, 레이드, 컨버전스",
+            "pages": [
+              {
+                "label": "인스턴스 PvE 한눈에 보기",
+                "href": "/content/instanced/overview/"
+              },
+              {
+                "label": "던전 기초",
+                "href": "/content/instanced/dungeons/"
+              },
+              {
+                "label": "프랙탈 기초",
+                "href": "/content/instanced/fractals/"
+              },
+              {
+                "label": "레이드 & 레이드 인카운터",
+                "href": "/content/instanced/raids/"
+              },
+              {
+                "label": "레이드 공략",
+                "href": "/content/instanced/raids/guides/"
+              },
+              {
+                "label": "컨버전스",
+                "href": "/content/instanced/convergences/"
+              }
+            ]
+          },
+          {
+            "key": "competitive",
+            "label": "경쟁 모드",
+            "href": "/content/competitive/",
+            "desc": "WvW, PvP: 언제 시작하면 되나",
+            "pages": [
+              {
+                "label": "WvW 기초",
+                "href": "/content/competitive/wvw/"
+              },
+              {
+                "label": "WvW 어빌리티 가이드",
+                "href": "/content/competitive/wvw-abilities/"
+              },
+              {
+                "label": "PvP 기초와 시작 시기",
+                "href": "/content/competitive/pvp/"
+              }
+            ]
+          }
+        ]
+      },
+      "professions": {
+        "label": "직업 선택",
+        "labelEn": "Professions",
+        "href": "/professions/",
+        "desc": "9개 직업 비교와 입문 추천. 플레이 스타일로 고르세요.",
+        "groups": [
+          {
+            "key": "heavy",
+            "label": "Heavy 방어구",
+            "href": "/professions/",
+            "desc": "워리어, 가디언, 레버넌트",
+            "pages": [
+              {
+                "label": "워리어 (Warrior)",
+                "href": "/professions/warrior/"
+              },
+              {
+                "label": "가디언 (Guardian)",
+                "href": "/professions/guardian/"
+              },
+              {
+                "label": "레버넌트 (Revenant)",
+                "href": "/professions/revenant/"
+              }
+            ]
+          },
+          {
+            "key": "medium",
+            "label": "Medium 방어구",
+            "href": "/professions/",
+            "desc": "레인저, 시프, 엔지니어",
+            "pages": [
+              {
+                "label": "레인저 (Ranger)",
+                "href": "/professions/ranger/"
+              },
+              {
+                "label": "시프 (Thief)",
+                "href": "/professions/thief/"
+              },
+              {
+                "label": "엔지니어 (Engineer)",
+                "href": "/professions/engineer/"
+              }
+            ]
+          },
+          {
+            "key": "light",
+            "label": "Light 방어구",
+            "href": "/professions/",
+            "desc": "네크로맨서, 메스머, 엘리멘탈리스트",
+            "pages": [
+              {
+                "label": "네크로맨서 (Necromancer)",
+                "href": "/professions/necromancer/"
+              },
+              {
+                "label": "메스머 (Mesmer)",
+                "href": "/professions/mesmer/"
+              },
+              {
+                "label": "엘리멘탈리스트 (Elementalist)",
+                "href": "/professions/elementalist/"
+              }
+            ]
+          }
+        ]
+      },
+      "tools": {
+        "label": "편의 도구",
+        "labelEn": "Tools & Addons",
+        "href": "/tools/addons/what-is/",
+        "desc": "애드온, 한글화, 유용한 외부 사이트를 소개합니다.",
+        "groups": [
+          {
+            "key": "addons",
+            "label": "애드온 & 도구",
+            "href": "/tools/",
+            "desc": "게임을 더 편하게 만드는 도구들",
+            "pages": [
+              {
+                "label": "애드온이란?",
+                "href": "/tools/addons/what-is/"
+              },
+              {
+                "label": "ArcDPS 설치와 사용법",
+                "href": "/tools/addons/arcdps/"
+              },
+              {
+                "label": "Nexus 애드온 관리자",
+                "href": "/tools/addons/nexus/"
+              },
+              {
+                "label": "Blish HUD 설치와 모듈",
+                "href": "/tools/addons/blishhud/"
+              },
+              {
+                "label": "유용한 사이트",
+                "href": "/tools/websites/"
+              }
+            ]
+          },
+          {
+            "key": "korean",
+            "label": "번역 · 플레이 도구",
+            "href": "/tools/korean/",
+            "desc": "언어 장벽을 줄이는 번역과 플레이 편의 기능",
+            "pages": [
+              {
+                "label": "길드워2 한글 패치",
+                "href": "/tools/korean/patch/"
+              },
+              {
+                "label": "CatBridge 소개",
+                "href": "/tools/korean/intro/"
+              },
+              {
+                "label": "설치와 설정",
+                "href": "/tools/korean/install/"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "en": {
+      "start": {
+        "label": "Start Here",
+        "labelEn": "Start Here",
+        "href": "/start/first-30-minutes/",
+        "desc": "Accounts, your first character, settings, and leveling.",
+        "groups": [
+          {
+            "key": "intro",
+            "label": "About the game",
+            "href": "/start/account/what-is-gw2/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "What Is Guild Wars 2?",
+                "href": "/start/account/what-is-gw2/"
+              },
+              {
+                "label": "How Guild Wars 2 Works",
+                "href": "/start/intro/features/"
+              }
+            ]
+          },
+          {
+            "key": "account",
+            "label": "Accounts & Buying",
+            "href": "/start/account/anet-vs-steam/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "ArenaNet or Steam?",
+                "href": "/start/account/anet-vs-steam/"
+              },
+              {
+                "label": "How Much Can You Play for Free?",
+                "href": "/start/account/free-to-play/"
+              },
+              {
+                "label": "Which Expansions Should I Buy?",
+                "href": "/start/account/expansion-order/"
+              },
+              {
+                "label": "What Is Living World?",
+                "href": "/start/account/living-world/"
+              },
+              {
+                "label": "Should I Use a Level-80 Boost?",
+                "href": "/start/account/level-boost/"
+              }
+            ]
+          },
+          {
+            "key": "character",
+            "label": "Your First Character",
+            "href": "/start/character/server-id/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Servers and Account Names",
+                "href": "/start/character/server-id/"
+              },
+              {
+                "label": "Character Creation",
+                "href": "/start/character/creation/"
+              },
+              {
+                "label": "Choosing Your First Profession",
+                "href": "/start/character/first-profession/"
+              }
+            ]
+          },
+          {
+            "key": "settings",
+            "label": "Controls & Settings",
+            "href": "/start/settings/controls/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Controls and Combat Settings",
+                "href": "/start/settings/controls/"
+              },
+              {
+                "label": "Graphics and Performance Settings",
+                "href": "/start/settings/graphics/"
+              }
+            ]
+          },
+          {
+            "key": "ui",
+            "label": "UI & Maps",
+            "href": "/start/ui/layout/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Understand the Screen Layout",
+                "href": "/start/ui/layout/"
+              },
+              {
+                "label": "Hero Panel, Inventory, and Menus",
+                "href": "/start/ui/panels/"
+              },
+              {
+                "label": "Reading the World Map and Minimap",
+                "href": "/start/ui/map/"
+              },
+              {
+                "label": "Chat, Emotes, and LFG",
+                "href": "/start/ui/chat/"
+              }
+            ]
+          },
+          {
+            "key": "first30",
+            "label": "Your First 30 Minutes",
+            "href": "/start/first-30-minutes/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Your First 30 Minutes",
+                "href": "/start/first-30-minutes/",
+                "featured": true
+              },
+              {
+                "label": "Your Login-to-Play Checklist",
+                "href": "/start/first-30-minutes/checklist/"
+              },
+              {
+                "label": "Shops, Buying, and Selling",
+                "href": "/start/first-30-minutes/vendors/"
+              }
+            ]
+          },
+          {
+            "key": "leveling",
+            "label": "Leveling",
+            "href": "/start/leveling/what-to-do/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "What to Do While Leveling",
+                "href": "/start/leveling/what-to-do/"
+              },
+              {
+                "label": "Why Map Completion Matters",
+                "href": "/start/leveling/map-completion/"
+              },
+              {
+                "label": "Hearts, Waypoints, Vistas, POIs, and Hero Challenges",
+                "href": "/start/leveling/map-objectives/"
+              }
+            ]
+          }
+        ]
+      },
+      "combat": {
+        "label": "Combat & Builds",
+        "labelEn": "Combat & Terms",
+        "href": "/combat/basics/boons-conditions/",
+        "desc": "Skills, combat mechanics, and your first build.",
+        "groups": [
+          {
+            "key": "basics",
+            "label": "Combat Basics",
+            "href": "/combat/basics/skill-bar/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "The Skill Bar and Weapon Skills",
+                "href": "/combat/basics/skill-bar/"
+              },
+              {
+                "label": "Dodging, Downed State, and Revival",
+                "href": "/combat/basics/dodge/"
+              },
+              {
+                "label": "Boons and Conditions",
+                "href": "/combat/basics/boons-conditions/"
+              },
+              {
+                "label": "Crowd Control and Breakbars",
+                "href": "/combat/basics/cc-breakbar/"
+              },
+              {
+                "label": "Combo Fields and Finishers",
+                "href": "/combat/basics/combo/"
+              },
+              {
+                "label": "Targeting, Positioning, and Survival",
+                "href": "/combat/basics/positioning/"
+              },
+              {
+                "label": "Movement Speed",
+                "href": "/combat/basics/movement-speed/"
+              }
+            ]
+          },
+          {
+            "key": "build",
+            "label": "Builds",
+            "href": "/combat/build/why-weak/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Why Does My Character Feel Weak?",
+                "href": "/combat/build/why-weak/",
+                "featured": true
+              },
+              {
+                "label": "Stats and What They Change",
+                "href": "/combat/build/stats/"
+              },
+              {
+                "label": "Traits and the Build Panel",
+                "href": "/combat/build/traits/"
+              },
+              {
+                "label": "Weapon Roles and First Impressions",
+                "href": "/combat/build/weapons/"
+              },
+              {
+                "label": "Healing, Utility, and Elite Skills",
+                "href": "/combat/build/utility-skills/"
+              }
+            ]
+          },
+          {
+            "key": "reference",
+            "label": "Reference",
+            "href": "/combat/reference/boons/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Boons and Their Effects",
+                "href": "/combat/reference/boons/"
+              },
+              {
+                "label": "Conditions and Their Effects",
+                "href": "/combat/reference/conditions/"
+              },
+              {
+                "label": "Guild Wars 2 Glossary",
+                "href": "/combat/reference/glossary/"
+              }
+            ]
+          }
+        ]
+      },
+      "progression": {
+        "label": "Progression & Gear",
+        "labelEn": "Progression & Gear",
+        "href": "/progression/gear/tiers/",
+        "desc": "Plan your next goal and choose your equipment.",
+        "groups": [
+          {
+            "key": "first-week",
+            "label": "Your First Week",
+            "href": "/progression/first-week/just-hit-80/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "What to Do at Level 80",
+                "href": "/progression/first-week/just-hit-80/",
+                "featured": true
+              },
+              {
+                "label": "Hero Points and Elite Specializations",
+                "href": "/progression/first-week/hero-points/"
+              },
+              {
+                "label": "Returning Player Checklist",
+                "href": "/progression/first-week/returning-player/"
+              }
+            ]
+          },
+          {
+            "key": "routine",
+            "label": "Daily Routines",
+            "href": "/progression/routine/wizards-vault/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Wizard's Vault Basics",
+                "href": "/progression/routine/wizards-vault/"
+              },
+              {
+                "label": "Daily and Weekly Reset Schedule",
+                "href": "/progression/routine/dailies/"
+              },
+              {
+                "label": "Low-Stress Daily Routines",
+                "href": "/progression/routine/low-stress/"
+              },
+              {
+                "label": "Things You Can Leave Until Later",
+                "href": "/progression/routine/can-ignore/"
+              }
+            ]
+          },
+          {
+            "key": "gear",
+            "label": "Gear Progression",
+            "href": "/progression/gear/tiers/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Gear Rarities and Your First Goals",
+                "href": "/progression/gear/tiers/"
+              },
+              {
+                "label": "Your First Exotic Gear Set",
+                "href": "/progression/gear/first-exotic/"
+              },
+              {
+                "label": "Ascended Trinkets: A Quick, Easy Route",
+                "href": "/progression/gear/winterberry/"
+              },
+              {
+                "label": "From Exotic to Ascended: When and Why to Upgrade",
+                "href": "/progression/gear/exotic-to-ascended/"
+              },
+              {
+                "label": "Ascended Gear: Comparing Your Options",
+                "href": "/progression/gear/ascended-routes/"
+              },
+              {
+                "label": "Stat Changes and Equipment Upgrades",
+                "href": "/progression/gear/stat-swap/"
+              }
+            ]
+          },
+          {
+            "key": "masteries",
+            "label": "Masteries",
+            "href": "/progression/systems/masteries/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "The Mastery System",
+                "href": "/progression/systems/masteries/"
+              },
+              {
+                "label": "Central Tyria Masteries",
+                "href": "/progression/systems/masteries/central-tyria/"
+              },
+              {
+                "label": "Heart of Thorns Masteries",
+                "href": "/progression/systems/masteries/heart-of-thorns/"
+              },
+              {
+                "label": "Path of Fire Masteries",
+                "href": "/progression/systems/masteries/path-of-fire/"
+              },
+              {
+                "label": "Icebrood Saga Masteries",
+                "href": "/progression/systems/masteries/icebrood-saga/"
+              },
+              {
+                "label": "End of Dragons Masteries",
+                "href": "/progression/systems/masteries/end-of-dragons/"
+              },
+              {
+                "label": "Secrets of the Obscure Masteries",
+                "href": "/progression/systems/masteries/secrets-of-the-obscure/"
+              },
+              {
+                "label": "Janthir Wilds Masteries",
+                "href": "/progression/systems/masteries/janthir-wilds/"
+              },
+              {
+                "label": "Visions of Eternity Masteries",
+                "href": "/progression/systems/masteries/visions-of-eternity/"
+              }
+            ]
+          },
+          {
+            "key": "account-systems",
+            "label": "Account Systems",
+            "href": "/progression/systems/mounts/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Mounts",
+                "href": "/progression/systems/mounts/"
+              },
+              {
+                "label": "Jade Bot",
+                "href": "/progression/systems/jade-bot/"
+              },
+              {
+                "label": "Homesteads",
+                "href": "/progression/systems/homestead/"
+              }
+            ]
+          }
+        ]
+      },
+      "economy": {
+        "label": "Account & Economy",
+        "labelEn": "Account & Economy",
+        "href": "/economy/inventory/storage/",
+        "desc": "Inventory, crafting, currencies, and useful tools.",
+        "groups": [
+          {
+            "key": "inventory",
+            "label": "Inventory",
+            "href": "/economy/inventory/storage/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Bank, Material Storage, and Shared Inventory",
+                "href": "/economy/inventory/storage/"
+              },
+              {
+                "label": "Convenient Bank and Trading Post Access",
+                "href": "/economy/inventory/access/"
+              },
+              {
+                "label": "What to Keep, Sell, Salvage, or Discard",
+                "href": "/economy/inventory/clutter-list/"
+              },
+              {
+                "label": "Choosing and Using Salvage Kits",
+                "href": "/economy/inventory/salvage-kits/"
+              }
+            ]
+          },
+          {
+            "key": "trading",
+            "label": "Trading & Currencies",
+            "href": "/economy/trading/trading-post/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Trading Post Basics",
+                "href": "/economy/trading/trading-post/"
+              },
+              {
+                "label": "Wallet and Main Currencies",
+                "href": "/economy/trading/currencies/"
+              },
+              {
+                "label": "Map Currencies and Ascended Trinkets",
+                "href": "/economy/trading/map-currencies/"
+              },
+              {
+                "label": "Gem Store Basics and Recommended Purchases",
+                "href": "/economy/gemstore/basics/"
+              },
+              {
+                "label": "Free and Inexpensive Outfits",
+                "href": "/economy/gemstore/free-outfits/"
+              },
+              {
+                "label": "Mail and Your Inbox",
+                "href": "/economy/trading/mail/"
+              },
+              {
+                "label": "How to Earn Gold",
+                "href": "/economy/trading/gold-farming/"
+              }
+            ]
+          },
+          {
+            "key": "crafting",
+            "label": "Crafting",
+            "href": "/economy/crafting/when-to-start/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "When Should I Start Crafting?",
+                "href": "/economy/crafting/when-to-start/"
+              },
+              {
+                "label": "Preparing to Level Your Crafting",
+                "href": "/economy/crafting/leveling/"
+              },
+              {
+                "label": "Gathering Tools and Materials",
+                "href": "/economy/crafting/gathering/"
+              }
+            ]
+          },
+          {
+            "key": "tools",
+            "label": "External Tools",
+            "href": "/economy/tools/api-key/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Creating an API Key",
+                "href": "/economy/tools/api-key/"
+              },
+              {
+                "label": "Using API Tools",
+                "href": "/economy/tools/gw2efficiency/"
+              },
+              {
+                "label": "Searching the Wiki Quickly",
+                "href": "/economy/tools/wiki/"
+              },
+              {
+                "label": "Steam Account FAQ",
+                "href": "/economy/tools/steam-faq/"
+              }
+            ]
+          }
+        ]
+      },
+      "content": {
+        "label": "Content & Groups",
+        "labelEn": "Content & Groups",
+        "href": "/content/open-world/events/",
+        "desc": "Find events, group content, and people to play with.",
+        "groups": [
+          {
+            "key": "open-world",
+            "label": "Open World",
+            "href": "/content/open-world/events/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Dynamic Events",
+                "href": "/content/open-world/events/"
+              },
+              {
+                "label": "Meta Events",
+                "href": "/content/open-world/meta-events/"
+              },
+              {
+                "label": "World Bosses: Locations and Timers",
+                "href": "/content/open-world/world-bosses/"
+              },
+              {
+                "label": "Commanders and Finding Content",
+                "href": "/content/open-world/commander/"
+              },
+              {
+                "label": "Jumping Puzzles and Hidden Adventures",
+                "href": "/content/open-world/jumping-puzzles/"
+              }
+            ]
+          },
+          {
+            "key": "groups",
+            "label": "Groups & Guilds",
+            "href": "/content/groups/party-squad/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Parties, Squads, and Subgroups",
+                "href": "/content/groups/party-squad/"
+              },
+              {
+                "label": "LFG and Group Communication",
+                "href": "/content/groups/lfg/"
+              },
+              {
+                "label": "Finding and Using Guilds",
+                "href": "/content/groups/guild/"
+              }
+            ]
+          },
+          {
+            "key": "instanced",
+            "label": "Instanced PvE",
+            "href": "/content/instanced/overview/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Instanced PvE Overview",
+                "href": "/content/instanced/overview/"
+              },
+              {
+                "label": "Dungeon Basics",
+                "href": "/content/instanced/dungeons/"
+              },
+              {
+                "label": "Fractal Basics",
+                "href": "/content/instanced/fractals/"
+              },
+              {
+                "label": "Raids &amp; Raid Encounters",
+                "href": "/content/instanced/raids/"
+              },
+              {
+                "label": "Raid guides",
+                "href": "/content/instanced/raids/guides/"
+              },
+              {
+                "label": "Convergences",
+                "href": "/content/instanced/convergences/"
+              }
+            ]
+          },
+          {
+            "key": "competitive",
+            "label": "PvP & WvW",
+            "href": "/content/competitive/wvw/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "WvW Basics",
+                "href": "/content/competitive/wvw/"
+              },
+              {
+                "label": "WvW Abilities",
+                "href": "/content/competitive/wvw-abilities/"
+              },
+              {
+                "label": "PvP Basics and When to Start",
+                "href": "/content/competitive/pvp/"
+              }
+            ]
+          }
+        ]
+      },
+      "professions": {
+        "label": "Professions",
+        "labelEn": "Professions",
+        "href": "/professions/",
+        "desc": "Compare the nine professions and their skills.",
+        "groups": [
+          {
+            "key": "heavy",
+            "label": "Heavy Armor",
+            "href": "/professions/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Warrior",
+                "href": "/professions/warrior/"
+              },
+              {
+                "label": "Guardian",
+                "href": "/professions/guardian/"
+              },
+              {
+                "label": "Revenant",
+                "href": "/professions/revenant/"
+              }
+            ]
+          },
+          {
+            "key": "medium",
+            "label": "Medium Armor",
+            "href": "/professions/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Ranger",
+                "href": "/professions/ranger/"
+              },
+              {
+                "label": "Thief",
+                "href": "/professions/thief/"
+              },
+              {
+                "label": "Engineer",
+                "href": "/professions/engineer/"
+              }
+            ]
+          },
+          {
+            "key": "light",
+            "label": "Light Armor",
+            "href": "/professions/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "Necromancer",
+                "href": "/professions/necromancer/"
+              },
+              {
+                "label": "Mesmer",
+                "href": "/professions/mesmer/"
+              },
+              {
+                "label": "Elementalist",
+                "href": "/professions/elementalist/"
+              }
+            ]
+          }
+        ]
+      },
+      "tools": {
+        "label": "Tools",
+        "labelEn": "Tools & Addons",
+        "href": "/tools/addons/what-is/",
+        "desc": "Add-ons and language tools.",
+        "groups": [
+          {
+            "key": "addons",
+            "label": "Add-ons & Tools",
+            "href": "/tools/addons/what-is/",
+            "desc": "",
+            "pages": [
+              {
+                "label": "What Are Addons?",
+                "href": "/tools/addons/what-is/"
+              },
+              {
+                "label": "Installing and Using ArcDPS",
+                "href": "/tools/addons/arcdps/"
+              },
+              {
+                "label": "Nexus Addon Manager",
+                "href": "/tools/addons/nexus/"
+              },
+              {
+                "label": "Installing Blish HUD and Modules",
+                "href": "/tools/addons/blishhud/"
+              },
+              {
+                "label": "Useful Websites",
+                "href": "/tools/websites/"
+              }
+            ]
+          },
+          {
+            "key": "korean",
+            "label": "Translation & player tools",
+            "href": "/tools/korean/intro/",
+            "desc": "Translation and tools for playing across languages",
+            "pages": [
+              {
+                "label": "Introducing CatBridge",
+                "href": "/tools/korean/intro/"
+              },
+              {
+                "label": "CatBridge Installation and Setup",
+                "href": "/tools/korean/install/"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
