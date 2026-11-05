@@ -1,0 +1,37 @@
+{
+  "name": "xinji-bbs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --no-warnings tests/e2e.cjs && node tests/sensitive-check.cjs && node tests/reaction-check.cjs && node tests/moderate-check.cjs && node tests/poll-check.cjs && node tests/terms-check.cjs && node tests/att-check.cjs && node tests/anon-check.cjs && node tests/ui-check.cjs && node tests/panel-check.cjs && node tests/contrast-check.cjs && node tests/layout-check.cjs && node tests/safari-check.cjs && node tests/compat-check.cjs && node --test tests/community*.test.mjs",
+    "test:anon": "node --no-warnings tests/anon-check.cjs",
+    "test:mutate": "node --no-warnings tests/_mutate-anon.cjs",
+    "test:ui": "node tests/contrast-check.cjs --all && node tests/layout-check.cjs --shot && node tests/snapshot.cjs && node tests/nav-check.cjs && node tests/viewport-check.cjs",
+    "test:shot": "node tests/snapshot.cjs",
+    "test:nav": "node tests/nav-check.cjs",
+    "test:vp": "node tests/viewport-check.cjs --shot",
+    "test:compat": "node tests/compat-check.cjs",
+    "test:community": "node --test tests/community*.test.mjs",
+    "dev:community": "wrangler dev --config wrangler.community.jsonc --port 8790 --ip 127.0.0.1",
+    "db:community": "wrangler d1 migrations apply DB --local --config wrangler.community.jsonc",
+    "build:community": "node scripts/build-community.mjs",
+    "prepare:community": "node scripts/prepare-community-release.mjs",
+    "check:community-local": "node scripts/check-community-local.mjs",
+    "check:community-backup": "node scripts/check-community-backup.mjs",
+    "dev:ux": "npm run build:community && wrangler dev --local --config local-ux/wrangler.jsonc --persist-to .wrangler/ux-local --port 8797 --ip 127.0.0.1",
+    "db:ux": "wrangler d1 migrations apply DB --local --config local-ux/wrangler.jsonc --persist-to .wrangler/ux-local"
+  },
+  "devDependencies": {
+    "@fontsource-variable/noto-sans-kr": "5.3.0",
+    "dompurify": "3.4.16",
+    "esbuild": "0.28.2",
+    "fake-indexeddb": "6.2.5",
+    "linkedom": "0.18.13",
+    "photoswipe": "5.4.4",
+    "tinymce": "8.9.3",
+    "wrangler": "4.149.0"
+  }
+}

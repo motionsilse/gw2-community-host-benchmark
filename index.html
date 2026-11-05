@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#14231f">
+  <title>커뮤니티 · 길드워 2 한국어 가이드</title>
+  <link rel="icon" href="/gw2-community-host-benchmark/community/guide-icon.svg" type="image/svg+xml">
+  <script type="application/json" id="community-initial-list">{"total":20,"regularTotal":20,"noticeTotal":0,"page":1,"limit":20,"pages":1,"items":[{"id":24,"title":"이미지가 포함된 테스트 글","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":20,"likes":0},{"id":23,"title":"커뮤니티 테스트 글 23","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":21,"likes":1},{"id":22,"title":"커뮤니티 테스트 글 22","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":22,"likes":2},{"id":21,"title":"커뮤니티 테스트 글 21","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":23,"likes":0},{"id":20,"title":"커뮤니티 테스트 글 20","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":24,"likes":1},{"id":19,"title":"커뮤니티 테스트 글 19","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":25,"likes":2},{"id":18,"title":"커뮤니티 테스트 글 18","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":26,"likes":0},{"id":17,"title":"커뮤니티 테스트 글 17","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":27,"likes":1},{"id":16,"title":"커뮤니티 테스트 글 16","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":28,"likes":2},{"id":15,"title":"커뮤니티 테스트 글 15","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":29,"likes":0},{"id":14,"title":"커뮤니티 테스트 글 14","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":30,"likes":1},{"id":13,"title":"커뮤니티 테스트 글 13","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":31,"likes":2},{"id":12,"title":"커뮤니티 테스트 글 12","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":32,"likes":0},{"id":11,"title":"커뮤니티 테스트 글 11","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":33,"likes":1},{"id":10,"title":"커뮤니티 테스트 글 10","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":34,"likes":2},{"id":9,"title":"커뮤니티 테스트 글 9","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":35,"likes":0},{"id":8,"title":"커뮤니티 테스트 글 8","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":36,"likes":1},{"id":7,"title":"커뮤니티 테스트 글 7","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":37,"likes":2},{"id":6,"title":"커뮤니티 테스트 글 6","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":38,"likes":0},{"id":5,"title":"커뮤니티 테스트 글 5","username":"테스트 사용자","board_name":"자유","created_at":"2026-11-05T10:00:00Z","replies":0,"view_count":39,"likes":1}]}</script><script>(() => {
+const nativeFetch=window.fetch.bind(window), prefix="/gw2-community-host-benchmark";
+window.fetch=(input,options={})=>{
+  const url=new URL(typeof input==='string'?input:input.url,location.href);
+  if(url.origin!==location.origin||!url.pathname.startsWith('/api/'))return nativeFetch(input,options);
+  const method=options.method||(typeof input==='object'&&input.method)||'GET';
+  if(method!=='GET')return Promise.resolve(Response.json({error:'속도 비교용 게시판입니다. 글은 저장되지 않습니다.'},{status:405}));
+  const thread=/^\/api\/threads\/([0-9]+)$/.exec(url.pathname);
+  const file=thread?'thread-'+thread[1]:{'/api/status':'status','/api/boards':'boards','/api/threads':'threads'}[url.pathname];
+  if(!file)return Promise.resolve(Response.json({error:'속도 비교용 게시판입니다.'},{status:404}));
+  const result=nativeFetch(prefix+'/fixtures/'+file+'.json',options);
+  const query=url.searchParams.get('q')?.toLowerCase();
+  if(file!=='threads'||!query)return result;
+  return result.then(r=>r.json()).then(data=>{const items=data.items.filter(row=>row.title.toLowerCase().includes(query));return Response.json({...data,items,total:items.length,regularTotal:items.length});});
+};
+})();</script><script data-community-boot>(()=>{var y={ko:["/gw2-community-host-benchmark/community/build/ko/app-JBZBJ46E.js","/gw2-community-host-benchmark/community/build/ko/chunk-J657V7B2.js","/gw2-community-host-benchmark/community/build/ko/chunk-2VJSJFTN.js","/gw2-community-host-benchmark/community/build/ko/chunk-CNBBAMIG.js","/gw2-community-host-benchmark/community/build/ko/chunk-GHT7LJ4Z.js"],en:["/gw2-community-host-benchmark/community/build/en/app-NYKX7RCU.js","/gw2-community-host-benchmark/community/build/en/chunk-J657V7B2.js","/gw2-community-host-benchmark/community/build/en/chunk-OGYSYXS7.js","/gw2-community-host-benchmark/community/build/en/chunk-GLAI5CDE.js","/gw2-community-host-benchmark/community/build/en/chunk-ZFHIEBSY.js"]};var f={ko:["/gw2-community-host-benchmark/community/build/ko/thread-FPAUKQFW.js","/gw2-community-host-benchmark/community/build/ko/chunk-BQPVBOTR.js","/gw2-community-host-benchmark/community/build/ko/chunk-NBIKPEDX.js","/gw2-community-host-benchmark/community/build/ko/chunk-IRTO4M6U.js","/gw2-community-host-benchmark/community/build/ko/chunk-DTXPYTTD.js","/gw2-community-host-benchmark/community/build/ko/chunk-74MGOXWZ.js"],en:["/gw2-community-host-benchmark/community/build/en/thread-RUR4HWNS.js","/gw2-community-host-benchmark/community/build/en/chunk-WZWCN3BF.js","/gw2-community-host-benchmark/community/build/en/chunk-NBIKPEDX.js","/gw2-community-host-benchmark/community/build/en/chunk-7GSWG45T.js","/gw2-community-host-benchmark/community/build/en/chunk-ZTHNZD5Y.js","/gw2-community-host-benchmark/community/build/en/chunk-CPX5WQIB.js"]};var T="gw2community.locale",p=n=>n==="ko"||n==="en";function S({url:n,stored:e,language:t="ko"}){let i=n.searchParams.get("lang");return p(i)?i:/^\/en(?:\/|$)/.test(n.pathname)?"en":p(e)?e:/^ko(?:-|$)/i.test(t)?"ko":"en"}function x({href:n,storage:e,language:t}){let i;try{i=e?.getItem(T)}catch{}let o=new URL(n),c=S({url:o,stored:i,language:t});if(p(o.searchParams.get("lang")))try{e?.setItem(T,c)}catch{}return c}function g(){if(typeof globalThis.location?.href!="string")return"ko";let n;try{n=globalThis.localStorage}catch{}return x({href:location.href,storage:n,language:globalThis.navigator?.languages?.[0]||globalThis.navigator?.language||"ko"})}function j(n){let e=new URLSearchParams({view:"list"});for(let t of["page","q","board"])n.get(t)&&e.set(t,n.get(t));return e.get("board")==="none"&&(e.delete("board"),e.delete("page")),"/api/threads"+(e.size?"?"+e:"")}function E(n,e){return"/api/threads/"+n+"?view=read"}function R(n,e){let t=/^post\/([1-9]\d*)$/.exec(n);if(t)return{path:E(Number(t[1]),e),headers:{"x-community-view":"1"}};if(!n||n==="list")return{path:j(e)};if(n!=="write"||e.has("draft")||e.get("kind")==="post")return{};let i=e.get("target");return!/^[1-9]\d*$/.test(i||"")||!Number.isSafeInteger(Number(i))?{}:{path:"/api/threads/"+i}}function k(){if(typeof globalThis.fetch!="function"||!globalThis.location?.href)return;globalThis.__communityInitialContext?.cancel();let n=new URL(location.href).hash||"#list",e=n.slice(1).split("?")[0],t=new Map,i=()=>globalThis.removeEventListener?.("hashchange",o),o=()=>{globalThis.__communityInitialContext===c&&delete globalThis.__communityInitialContext,i();for(let u of t.values())u.controller.abort()},c={hash:n,records:t,detach:i,cancel:o};globalThis.__communityInitialContext=c;for(let u of/^post\/[1-9]\d*$/.test(e)||e==="licenses"?["/api/status"]:["/api/status","/api/boards"]){let d=new AbortController,l={controller:d};t.set(u,l);try{l.response=fetch(u,{credentials:"same-origin",headers:{"content-type":"application/json"},signal:AbortSignal.any([d.signal,AbortSignal.timeout(3e4)])})}catch(a){l.response=Promise.reject(a)}l.response.catch(()=>{})}globalThis.addEventListener?.("hashchange",o,{once:!0})}function _(n=globalThis.document){if(typeof globalThis.fetch!="function"||!globalThis.location?.href)return;let[e,t=""]=new URL(location.href).hash.slice(1).split("?"),i=n?.getElementById?.("community-initial-list"),o=i?.textContent;i?.remove();let c;if(o&&(!e||e==="list")&&!t)try{let r=JSON.parse(o);r.page===1&&Array.isArray(r.items)&&r.items.length<=100&&r.items.every(m=>m&&Number.isSafeInteger(m.id)&&m.id>0&&typeof m.title=="string")&&Number.isSafeInteger(r.total)&&r.total>=0&&Number.isSafeInteger(r.pages)&&r.pages>0&&(c=o)}catch{}let{path:u,headers:d}=R(e,new URLSearchParams(t));if(!u)return;globalThis.__communityInitialList?.cancel();let l=new AbortController,a=()=>globalThis.removeEventListener?.("hashchange",s),s=()=>{globalThis.__communityInitialList===h&&delete globalThis.__communityInitialList,a(),l.abort()},h={path:u,controller:l,detach:a,cancel:s};try{h.response=c?Promise.resolve(new Response(c,{headers:{"content-type":"application/json"}})):fetch(u,{credentials:"same-origin",headers:{"content-type":"application/json",...d},signal:AbortSignal.any([l.signal,AbortSignal.timeout(3e4)])})}catch(r){h.response=Promise.reject(r)}h.response.catch(()=>{}),globalThis.__communityInitialList=h,globalThis.addEventListener?.("hashchange",s,{once:!0})}function w(n,e=g(),t=document,i={}){_(t),k();let o=n[e],c=()=>{let[a,s=""]=new URL(globalThis.location?.href||"https://localhost/").hash.slice(1).split("?");t.documentElement.dataset.communityInitialList=(!a||a==="list")&&!s?e:""};c(),globalThis.addEventListener?.("hashchange",c);let u=new URL(globalThis.location?.href||"https://localhost/").hash.slice(1).split("?")[0],d=/^post\/[1-9]\d*$/.test(u)?[...o,...i[e]||[]]:o;for(let a of new Set(d)){let s=t.createElement("link");s.rel="modulepreload",s.href=a,t.head.append(s)}let l=()=>{let a=t.querySelector("main .search");if(a&&t.documentElement.dataset.communityInitialList===e){let h=a.querySelector('[name="q"]');for(let r of a.querySelectorAll("[disabled]"))r.removeAttribute("disabled");a.onsubmit=r=>{r.preventDefault();let m=new URLSearchParams,b=h.value.trim();b&&m.set("q",b),location.hash="list"+(m.size?"?"+m:"")}}let s=t.createElement("script");s.type="module",s.src=o[0],s.onload=()=>globalThis.removeEventListener?.("hashchange",c),t.head.append(s)};t.readyState==="loading"?t.addEventListener("DOMContentLoaded",l,{once:!0}):l()}typeof y<"u"&&w(y,g(),document,f);})();
+</script>
+  <style data-entry-style="/gw2-community-host-benchmark/community/styles.css">/*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
+
+.pswp {
+  --pswp-bg: #000;
+  --pswp-placeholder-bg: #222;
+  
+
+  --pswp-root-z-index: 100000;
+  
+  --pswp-preloader-color: rgba(79, 79, 79, 0.4);
+  --pswp-preloader-color-secondary: rgba(255, 255, 255, 0.9);
+  
+  /* defined via js:
+  --pswp-transition-duration: 333ms; */
+  
+  --pswp-icon-color: #fff;
+  --pswp-icon-color-secondary: #4f4f4f;
+  --pswp-icon-stroke-color: #4f4f4f;
+  --pswp-icon-stroke-width: 2px;
+
+  --pswp-error-text-color: var(--pswp-icon-color);
+}
+
+
+/*
+	Styles for basic PhotoSwipe (pswp) functionality (sliding area, open/close transitions)
+*/
+
+.pswp {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: var(--pswp-root-z-index);
+	display: none;
+	touch-action: none;
+	outline: 0;
+	opacity: 0.003;
+	contain: layout style size;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Prevents focus outline on the root element,
+  (it may be focused initially) */
+.pswp:focus {
+  outline: 0;
+}
+
+.pswp * {
+  box-sizing: border-box;
+}
+
+.pswp img {
+  max-width: none;
+}
+
+.pswp--open {
+	display: block;
+}
+
+.pswp,
+.pswp__bg {
+	transform: translateZ(0);
+	will-change: opacity;
+}
+
+.pswp__bg {
+  opacity: 0.005;
+	background: var(--pswp-bg);
+}
+
+.pswp,
+.pswp__scroll-wrap {
+	overflow: hidden;
+}
+
+.pswp__scroll-wrap,
+.pswp__bg,
+.pswp__container,
+.pswp__item,
+.pswp__content,
+.pswp__img,
+.pswp__zoom-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.pswp__img,
+.pswp__zoom-wrap {
+	width: auto;
+	height: auto;
+}
+
+.pswp--click-to-zoom.pswp--zoom-allowed .pswp__img {
+	cursor: -webkit-zoom-in;
+	cursor: -moz-zoom-in;
+	cursor: zoom-in;
+}
+
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img {
+	cursor: move;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
+}
+
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+/* :active to override grabbing cursor */
+.pswp--no-mouse-drag.pswp--zoomed-in .pswp__img,
+.pswp--no-mouse-drag.pswp--zoomed-in .pswp__img:active,
+.pswp__img {
+	cursor: -webkit-zoom-out;
+	cursor: -moz-zoom-out;
+	cursor: zoom-out;
+}
+
+
+/* Prevent selection and tap highlights */
+.pswp__container,
+.pswp__img,
+.pswp__button,
+.pswp__counter {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.pswp__item {
+	/* z-index for fade transition */
+	z-index: 1;
+	overflow: hidden;
+}
+
+.pswp__hidden {
+	display: none !important;
+}
+
+/* Allow to click through pswp__content element, but not its children */
+.pswp__content {
+  pointer-events: none;
+}
+.pswp__content > * {
+  pointer-events: auto;
+}
+
+
+/*
+
+  PhotoSwipe UI
+
+*/
+
+/*
+	Error message appears when image is not loaded
+	(JS option errorMsg controls markup)
+*/
+.pswp__error-msg-container {
+  display: grid;
+}
+.pswp__error-msg {
+	margin: auto;
+	font-size: 1em;
+	line-height: 1;
+	color: var(--pswp-error-text-color);
+}
+
+/*
+class pswp__hide-on-close is applied to elements that
+should hide (for example fade out) when PhotoSwipe is closed
+and show (for example fade in) when PhotoSwipe is opened
+ */
+.pswp .pswp__hide-on-close {
+	opacity: 0.005;
+	will-change: opacity;
+	transition: opacity var(--pswp-transition-duration) cubic-bezier(0.4, 0, 0.22, 1);
+	z-index: 10; /* always overlap slide content */
+	pointer-events: none; /* hidden elements should not be clickable */
+}
+
+/* class pswp--ui-visible is added when opening or closing transition starts */
+.pswp--ui-visible .pswp__hide-on-close {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/* <button> styles, including css reset */
+.pswp__button {
+	position: relative;
+	display: block;
+	width: 50px;
+	height: 60px;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	cursor: pointer;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	opacity: 0.85;
+	-webkit-appearance: none;
+	-webkit-touch-callout: none;
+}
+
+.pswp__button:hover,
+.pswp__button:active,
+.pswp__button:focus {
+  transition: none;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.pswp__button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+}
+
+.pswp__icn {
+  fill: var(--pswp-icon-color);
+  color: var(--pswp-icon-color-secondary);
+}
+
+.pswp__icn {
+  position: absolute;
+  top: 14px;
+  left: 9px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pswp__icn-shadow {
+  stroke: var(--pswp-icon-stroke-color);
+  stroke-width: var(--pswp-icon-stroke-width);
+  fill: none;
+}
+
+.pswp__icn:focus {
+	outline: 0;
+}
+
+/*
+	div element that matches size of large image,
+	large image loads on top of it,
+	used when msrc is not provided
+*/
+div.pswp__img--placeholder,
+.pswp__img--with-bg {
+	background: var(--pswp-placeholder-bg);
+}
+
+.pswp__top-bar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 60px;
+	display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+	z-index: 10;
+
+	/* allow events to pass through top bar itself */
+	pointer-events: none !important;
+}
+.pswp__top-bar > * {
+  pointer-events: auto;
+  /* this makes transition significantly more smooth,
+     even though inner elements are not animated */
+  will-change: opacity;
+}
+
+
+/*
+
+  Close button
+
+*/
+.pswp__button--close {
+  margin-right: 6px;
+}
+
+
+/*
+
+  Arrow buttons
+
+*/
+.pswp__button--arrow {
+  position: absolute;
+  top: 0;
+  width: 75px;
+  height: 100px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.pswp__button--arrow:disabled {
+  display: none;
+  cursor: default;
+}
+
+.pswp__button--arrow .pswp__icn {
+  top: 50%;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border-radius: 0;
+}
+
+.pswp--one-slide .pswp__button--arrow {
+  display: none;
+}
+
+/* hide arrows on touch screens */
+.pswp--touch .pswp__button--arrow {
+  visibility: hidden;
+}
+
+/* show arrows only after mouse was used */
+.pswp--has_mouse .pswp__button--arrow {
+  visibility: visible;
+}
+
+.pswp__button--arrow--prev {
+  right: auto;
+  left: 0px;
+}
+
+.pswp__button--arrow--next {
+  right: 0px;
+}
+.pswp__button--arrow--next .pswp__icn {
+  left: auto;
+  right: 14px;
+  /* flip horizontally */
+  transform: scale(-1, 1);
+}
+
+/*
+
+  Zoom button
+
+*/
+.pswp__button--zoom {
+  display: none;
+}
+
+.pswp--zoom-allowed .pswp__button--zoom {
+  display: block;
+}
+
+/* "+" => "-" */
+.pswp--zoomed-in .pswp__zoom-icn-bar-v {
+  display: none;
+}
+
+
+/*
+
+  Loading indicator
+
+*/
+.pswp__preloader {
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  height: 60px;
+  margin-right: auto;
+}
+
+.pswp__preloader .pswp__icn {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  animation: pswp-clockwise 600ms linear infinite;
+}
+
+.pswp__preloader--active .pswp__icn {
+  opacity: 0.85;
+}
+
+@keyframes pswp-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/*
+
+  "1 of 10" counter
+
+*/
+.pswp__counter {
+  height: 30px;
+  margin-top: 15px;
+  margin-inline-start: 20px;
+  font-size: 14px;
+  line-height: 30px;
+  color: var(--pswp-icon-color);
+  text-shadow: 1px 1px 3px var(--pswp-icon-color-secondary);
+  opacity: 0.85;
+}
+
+.pswp--one-slide .pswp__counter {
+  display: none;
+}
+
+.notice-setting{cursor:pointer;background:#f2f5eb}.notice-setting input{width:17px;height:17px;margin:0;flex-shrink:0}.notice-setting strong{font-size:13px}.notice-setting small{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:3px}
+.admin-row.board-editor{display:block;padding:20px;margin-bottom:12px;border:1px solid var(--line)}.board-editor-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}.board-editor-heading>div:first-child{min-width:0}.board-editor-fields{display:grid;grid-template-columns:minmax(140px,1fr) minmax(180px,2fr);gap:18px;margin-top:18px}.board-editor-fields .field{margin-bottom:0}.board-editor>.plain-button{margin-top:10px;color:var(--danger)}#board-settings>.actions{margin:20px 0}@media(max-width:680px){.board-editor-fields{grid-template-columns:1fr;gap:12px}.admin-row.board-editor{padding:16px}}
+:root{--canvas:#f7f7f2;--surface:#fff;--panel:#eff1e9;--ink:#3a4740;--strong:#192a22;--muted:#5c695f;--line:#d9dfd3;--accent:#365b42;--deep:#294932;--danger:#a13324;--font:'Noto Sans KR Variable','Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.65 var(--font)}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}button,a,input,select,textarea{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.6}[hidden]{display:none!important}:where(a,button,input,textarea,select,summary):focus-visible{outline:3px solid #76aa59;outline-offset:3px}h1,h2,h3,p{margin-top:0}h1,h2,h3{color:var(--strong);letter-spacing:-.035em}h1{font-size:32px;line-height:1.35}h2{font-size:22px}p{margin-bottom:1em}.shell{max-width:1376px;margin-inline:auto;padding-inline:48px}.skip{position:absolute;top:-100px;left:12px;padding:10px;background:#fff;z-index:3000}.skip:focus{top:12px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.site-header{background:#14231f;color:#e6ecdf}.header-inner{max-width:1600px;margin:auto;min-height:80px;padding:16px 32px;display:flex;align-items:center;gap:40px}.brand{display:flex;align-items:center;gap:12px;white-space:nowrap}.brand-mark{font:900 29px/1 Arial,sans-serif;letter-spacing:-2px}.brand-title{border-left:1px solid #536054;padding-left:12px;font-size:13px;letter-spacing:-.03em}.header-inner>nav{display:flex;align-self:stretch;gap:30px;margin-inline:auto;font-size:13px}.header-inner>nav a{display:flex;align-items:center;position:relative}.header-inner>nav [aria-current]::after{content:'';position:absolute;bottom:3px;height:2px;background:#d9e9b0;left:0;right:0}.account-nav{display:flex;align-items:center;gap:16px;font-size:13px}.account-nav button{padding:6px 0;border:0;background:none;color:inherit}.account-nav a:hover,.header-inner a:hover{text-decoration:underline;text-underline-offset:5px}.service-state{background:#e9efdf;border-bottom:1px solid var(--line);font-size:12px;padding:8px 24px;text-align:center;color:#45583e}
+main.shell{padding-block:34px 48px;min-height:72vh}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:26px}.page-heading h1{margin:0 0 7px}.page-heading p{font-size:14px;color:var(--muted);margin:0}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:9px 17px;border:1px solid var(--line);border-radius:2px;background:var(--surface);font-weight:600;font-size:14px;line-height:1.4;white-space:nowrap;transition:background .15s,border-color .15s}.button:hover{background:#e8ede1;border-color:#aab7a3}.button.primary{background:var(--deep);border-color:var(--deep);color:#fff}.button.primary:hover{background:var(--accent)}.button.small{min-height:34px;padding:6px 11px;font-size:12px}.button.danger{color:var(--danger);border-color:#d7b4ad}.plain-button{border:0;background:none;padding:7px;font-size:13px;text-decoration:underline;text-underline-offset:3px}.muted{color:var(--muted)}.small-text{font-size:12px}.loading,.empty{padding:60px 20px;text-align:center;color:var(--muted)}.empty h2{font-size:21px}.empty .button{margin-top:12px}.message,[role=alert]{color:var(--danger);font-size:13px;white-space:pre-line;overflow-wrap:anywhere}[role=alert]:empty{display:none}.success-message{color:var(--accent);font-size:14px;white-space:pre-line}.breadcrumb{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin:0 0 22px}.breadcrumb a{text-decoration:underline;text-underline-offset:3px}
+.board-tools{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:2px solid var(--deep);padding-bottom:12px}.board-filters{display:flex;align-items:center;gap:16px}.count{font-size:14px;font-weight:600}.count span{color:var(--muted);font-weight:400;margin-left:7px}.search{display:flex;height:40px;width:300px;border:1px solid var(--line);background:#fff;border-radius:2px}.search input{width:100%;min-width:0;border:0;padding:8px 12px;background:none;font-size:13px}.search button{border:0;background:none;padding:6px 13px;font-size:13px;white-space:nowrap}.post-table{border-collapse:collapse;width:100%;table-layout:fixed;background:#fff;font-size:13px}.post-table th,.post-table td{border-bottom:1px solid var(--line);text-align:center;padding:11px 12px}.post-table th{height:38px;background:var(--panel);font-weight:500;color:var(--muted)}.post-table td{height:49px}.post-table .title-col{text-align:left}.post-table .number-col{width:68px}.post-table .author-col{width:150px}.post-table .date-col{width:126px}.post-table .views-col,.post-table .votes-col{width:64px;font-variant-numeric:tabular-nums}.post-table tbody tr:hover{background:#f4f6ef}.post-table .title-col a{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px;color:var(--strong)}.post-table .title-col a:hover{text-decoration:underline;text-underline-offset:3px}.post-table .author-col{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.post-table .number-col,.post-table .date-col{font-variant-numeric:tabular-nums;color:var(--muted)}.comment-count{font-size:12px;font-weight:700;color:var(--accent);margin-left:7px}.category-label{color:var(--muted);font-size:12px;margin-right:7px}.notice-row{background:#eff3e8}.notice-label{font-size:12px;color:var(--accent);font-weight:700}.mobile-meta{display:none}.board-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;margin-top:18px;gap:18px}.board-bottom>.button:first-child{justify-self:start}.board-bottom>.button:last-child{justify-self:end}.board-bottom>span{text-align:center}.pagination{display:flex;align-items:center;justify-content:center;gap:5px;margin:26px 0}.pagination a{display:grid;place-items:center;min-width:36px;height:36px;padding:4px 9px;font-size:13px}.pagination [aria-current]{background:var(--deep);color:#fff}.pagination a:hover{outline:1px solid var(--line)}
+.thread,.compose{max-width:1100px;margin-inline:auto}.post-head{border-top:3px solid #66824c;background:#fff;padding:28px 34px 22px;border-bottom:1px solid var(--line)}.post-head h1{font-size:28px;line-height:1.5;margin:8px 0 13px;overflow-wrap:anywhere}.post-meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--muted)}.post-meta strong{font-weight:500;color:var(--ink)}.reading-surface{background:#fff;padding:34px;min-height:260px}.post-end{display:flex;justify-content:space-between;align-items:center;gap:18px;border-block:1px solid var(--line);padding:18px 34px;background:#fff}.recommend{border:1px solid #9eaf95;border-radius:2px;padding:9px 22px;background:#f4f7ed;color:var(--accent);font-weight:600}.recommend[aria-pressed=true]{background:var(--deep);color:#fff}.recommend b{margin-left:8px}.comments{background:#fff;padding:28px 34px}.comments h2{font-size:18px}.comment{padding:19px 0;border-top:1px solid var(--line);scroll-margin-top:15px}.comment .post-meta{align-items:center;margin-bottom:12px}.comment .post-meta .actions{margin-left:auto}.comment .prose{font-size:14px}.reply-to{font-size:12px;background:var(--panel);padding:5px 10px;display:inline-block;margin-bottom:10px}.reply-form{padding-top:25px;border-top:1px solid var(--line)}.reply-form textarea{width:100%;min-height:110px;resize:vertical}.reply-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}.thread-nav{display:flex;justify-content:space-between;margin-top:22px}.identity{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px}.identity label{display:flex;align-items:center;gap:10px}.identity input{width:160px}.identity small{width:100%;color:var(--muted)}
+input,select,textarea{background:#fff;border:1px solid #bdc8b8;border-radius:2px;padding:10px 12px}input::placeholder,textarea::placeholder{color:#788475}input:disabled{background:var(--panel)}.compose-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:12px}.compose h1{font-size:27px;margin:0}.save-state{font-size:12px;color:var(--muted)}.compose-sheet{border:1px solid var(--line);border-top:3px solid #66824c;background:#fff}.title-input{border:0;border-bottom:1px solid var(--line);border-radius:0;display:block;width:100%;font-size:26px;font-weight:600;line-height:1.5;padding:22px 30px}.compose-identity{padding:16px 30px;border-bottom:1px solid var(--line)}.compose-category{display:flex;align-items:center;gap:12px;padding:12px 30px;border-bottom:1px solid var(--line);font-size:13px}.editor-hint{padding:12px 28px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}.editor-hint kbd{font:11px var(--font);border:1px solid #bac6b0;border-bottom-width:2px;border-radius:2px;padding:1px 4px;background:var(--panel)}.compose-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:20px}.compose-bottom p{font-size:12px;color:var(--muted);margin:0}.image-jobs:empty{display:none}.image-jobs{padding:8px 25px;border-top:1px solid var(--line)}.image-job{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;padding:8px 0}.job-name{max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.job-detail{color:var(--muted);flex:1}.image-job.error .job-detail{color:var(--danger)}.draft-note{background:#e9efdf;border:1px solid var(--line);padding:12px 16px;margin-bottom:18px;font-size:13px}.draft-row{padding:19px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:20px}.draft-row>div{flex:1;min-width:0}.draft-row strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.draft-row small{color:var(--muted)}.editor-loading{padding:45px 30px;min-height:460px;color:var(--muted)}
+.tox.tox-tinymce{border:0!important;border-radius:0!important}.tox .tox-editor-header{box-shadow:none!important;border-bottom:1px solid var(--line)!important}.tox .tox-toolbar,.tox .tox-toolbar__primary,.tox .tox-toolbar-overlord{background:var(--panel)!important}.tox .tox-statusbar{border-top:1px solid var(--line)!important}.tox .tox-tbtn[aria-label="이미지 추가"]{width:auto!important;min-width:85px;padding-inline:8px!important}
+.account-page{max-width:530px;margin:10px auto 45px}.account-page h1{font-size:28px}.account-page>p{color:var(--muted);font-size:14px}.account-form{background:#fff;border-top:3px solid #66824c;border-bottom:1px solid var(--line);padding:26px 28px}.field{display:block;margin-bottom:20px;font-size:14px;font-weight:500}.field>input,.field>textarea{display:block;width:100%;margin-top:8px;font-weight:400}.field small{display:block;margin-top:6px;font-size:12px;color:var(--muted);font-weight:400}.account-links{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin-top:24px;font-size:13px}.account-links a{text-decoration:underline;text-underline-offset:3px}.check-field{display:flex;align-items:flex-start;gap:10px;font-size:13px;margin-bottom:20px}.check-field input{margin-top:5px}.terms-text{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;border:1px solid var(--line);padding:25px;font-size:14px;line-height:1.9}.terms-inline{max-height:200px;overflow:auto;background:var(--panel);padding:15px;white-space:pre-wrap;font-size:12px;margin-bottom:20px}.challenge-host{margin-top:12px}
+.site-footer{border-top:1px solid var(--line);padding-top:22px;padding-bottom:26px;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted)}.site-footer nav{display:flex;gap:20px;flex-wrap:wrap}.site-footer a:hover{text-decoration:underline}#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:min(92vw,650px);padding:13px 20px;border-radius:3px;background:var(--deep);color:#fff;font-size:14px;z-index:2000}.image-open{display:block;max-width:100%;background:none;border:0;padding:0;cursor:zoom-in}.image-open img{display:block;margin:0}.image-viewer-placeholder{display:block;max-width:100%}.pswp{--pswp-bg:#10231d;--pswp-placeholder-bg:transparent;font-family:inherit}
+@media(max-width:900px){.header-inner{gap:22px;padding-inline:24px}.brand-title{display:none}.shell{padding-inline:28px}.post-table .author-col{width:115px}.post-table .date-col{width:110px}}
+@media(max-width:680px){.shell{padding-inline:18px}.header-inner{min-height:70px;padding:13px 18px;gap:18px}.brand-mark{font-size:27px}.header-inner>nav{gap:20px}.account-nav{font-size:12px;gap:12px}.account-nav .join-link{display:none}.header-inner>nav [aria-current]::after{bottom:0}.service-state{font-size:11px;padding:7px 16px}main.shell{padding-top:24px}.page-heading{align-items:flex-start;margin-bottom:20px;gap:12px}.page-heading h1{font-size:28px}.page-heading p{font-size:12px}.page-heading .actions{gap:7px}.page-heading .button{padding:9px 12px;font-size:13px}.button{min-height:44px}.board-tools{align-items:flex-start;gap:12px}.board-filters{gap:8px;flex-wrap:wrap}.board-filters select{padding:7px;max-width:125px;font-size:12px}.search{width:190px;flex-shrink:0}.post-table thead,.post-table .number-col,.post-table .author-col,.post-table .date-col,.post-table .views-col,.post-table .votes-col{display:none}.post-table td.title-col{padding:13px 10px}.post-table .title-col a{white-space:normal;font-size:14px;line-height:1.65}.mobile-meta{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:5px;color:var(--muted);font-size:11px}.mobile-meta .view-count{margin-left:auto}.mobile-meta .view-count,.mobile-meta .rec{white-space:nowrap}.board-bottom{grid-template-columns:auto minmax(0,1fr) auto;gap:8px;font-size:12px}.board-bottom>.button{padding-inline:12px}.post-head{padding:22px 18px 17px}.post-head h1{font-size:22px}.post-meta{font-size:12px;gap:7px 13px}.reading-surface{padding:26px 18px}.post-end{padding:16px 18px;flex-wrap:wrap}.comments{padding:24px 18px}.identity{gap:9px}.identity label{width:100%;justify-content:space-between}.identity input{width:calc(100% - 83px);max-width:320px}.identity small{font-size:11px}.reply-actions{align-items:flex-start}.reply-actions .button{padding-inline:12px}.compose-top{gap:9px;align-items:flex-start;flex-wrap:wrap}.compose h1{font-size:25px}.compose-top .actions{margin-left:auto}.save-state{font-size:11px}.title-input{font-size:22px;padding:19px 18px}.compose-identity{padding:14px 18px}.compose-category{padding:11px 18px}.editor-hint{padding:11px 16px;font-size:11px}.image-jobs{padding-inline:16px}.compose-bottom{align-items:flex-start;padding-bottom:env(safe-area-inset-bottom)}.compose-bottom p{font-size:11px;max-width:62%}.tox .tox-tbtn{height:40px!important;min-width:40px}.account-form{padding:24px 20px}.account-page h1{font-size:26px}.site-footer{flex-direction:column;gap:10px}.site-footer nav{gap:16px}}
+@media(max-width:390px){.search{width:160px}.header-inner>nav{gap:13px}.account-nav{gap:8px}.post-table td.title-col{padding-inline:8px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.confirm-dialog{width:min(480px,calc(100vw - 36px));border:1px solid var(--line);border-top:3px solid #66824c;border-radius:3px;background:#fff;padding:28px;color:var(--ink)}.confirm-dialog::backdrop{background:#10231d99}.confirm-dialog h2{font-size:21px}.confirm-dialog p{white-space:pre-line;overflow-wrap:anywhere;font-size:14px}.confirm-dialog .actions{justify-content:flex-end;margin-top:24px}
+.account-nav a[href="#account"]{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media(max-width:680px){.header-inner{flex-wrap:wrap}.account-nav{flex:1;justify-content:flex-end}.account-nav a[href="#account"]{max-width:84px}}
+.admin{max-width:1100px;margin-inline:auto}.admin-tabs{display:flex;flex-wrap:wrap;gap:8px 24px;border-bottom:2px solid var(--deep);margin:0 0 30px}.admin-tabs a{padding:10px 0;font-size:14px}.admin-tabs [aria-current]{font-weight:700;border-bottom:3px solid var(--deep)}.admin-section{padding:24px;background:#fff;border-block:1px solid var(--line);margin:24px 0}.admin-section .field{max-width:680px}.admin-section select{display:block;margin-top:8px;width:100%}.admin-row{display:flex;align-items:center;gap:16px;padding:18px 12px;background:#fff;border-bottom:1px solid var(--line)}.admin-row>div{min-width:0;flex:1}.admin-row strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.admin-row small{display:block;color:var(--muted);font-size:12px}.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-block:1px solid var(--line);background:#fff;padding:20px;gap:24px}.admin-stats dt{font-size:12px;color:var(--muted)}.admin-stats dd{font-size:20px;font-weight:600;margin:6px 0 0}
+.image-open img[hidden]{display:none}.image-open.image-unavailable{padding:20px;border:1px dashed var(--line);background:var(--panel);color:var(--muted);font-size:14px;cursor:default;opacity:1}.image-read-notice{font-size:14px}
+.image-open{position:relative}.image-open[aria-busy=true]{min-width:180px;min-height:64px;cursor:progress}.image-opening{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;background:#10231dbd;color:#fff;font-size:14px;padding:12px;pointer-events:none}.image-opening:before{content:"";width:18px;height:18px;border:2px solid #ffffff60;border-top-color:#fff;border-radius:50%;animation:image-opening-spin .8s linear infinite;flex:none}@keyframes image-opening-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.image-opening:before{animation:none}}
+.pswp__top-bar{padding-top:env(safe-area-inset-top);padding-right:env(safe-area-inset-right)}.pswp .pswp__button{opacity:1}.image-viewer-hint{position:absolute;bottom:max(12px,env(safe-area-inset-bottom));left:16px;right:16px;margin:0;text-align:center;font-size:13px;line-height:1.5;color:#fff;pointer-events:none}.pswp:not(.pswp--ui-visible) .pswp__top-bar{opacity:1;pointer-events:auto}
+.image-pending{min-width:180px;min-height:80px;background:#edf0e8}.image-load-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;color:#425648;font-size:14px;pointer-events:none}.image-open[aria-busy=true] .image-load-status{visibility:hidden}
+.pswp:not(.pswp--zoom-allowed) .image-viewer-hint{display:none}
+.image-detail-status{position:absolute;bottom:max(36px,calc(env(safe-area-inset-bottom) + 24px));left:16px;right:16px;text-align:center;font-size:13px;line-height:1.5;color:#fff;pointer-events:none}.image-detail-status[hidden]{display:none}.image-detail-status button{margin-left:8px;padding:5px 10px;border:1px solid #ffffff80;background:#10231d;color:#fff;border-radius:3px;pointer-events:auto}.image-detail-status button:focus-visible{outline:2px solid #f0d291;outline-offset:3px}
+.locale-switch{display:flex;gap:10px;align-items:center;font-size:12px;white-space:nowrap;border-left:1px solid #536054;padding-left:16px}.locale-switch a{padding-block:7px;color:#b8c5b9}.locale-switch [aria-current]{color:#edf5db;font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.tox .tox-tbtn[aria-label="Add images"]{width:auto!important;min-width:85px;padding-inline:8px!important}
+html[lang=en] h1,html[lang=en] h2,html[lang=en] h3{letter-spacing:-.02em}
+.draft-excerpt{margin:6px 0;color:var(--muted);font-size:13px;line-height:1.6;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.draft-row>.button,.draft-row>.plain-button{flex-shrink:0}
+@media(max-width:680px){.draft-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}.draft-row>div{grid-column:1/-1}.draft-row>.button{justify-self:start}.draft-row>.plain-button{justify-self:end}.draft-row>.button,.draft-row>.plain-button{min-height:44px}.board-tools .search{width:100%}}
+@media(max-width:680px){.header-inner{gap:12px}.locale-switch{padding-left:10px;gap:8px}.page-heading{flex-wrap:wrap}.reply-actions{flex-wrap:wrap}.reply-actions .button{white-space:normal;text-align:center}.compose-bottom{flex-wrap:wrap}.compose-bottom p{max-width:100%}.compose-bottom .actions{margin-left:auto}.identity label{gap:12px}.identity input{min-width:0}.board-tools{flex-wrap:wrap}.search{max-width:100%}}
+/* Keep touch controls readable without input-focus zoom on narrow screens. */
+@media(max-width:680px){input:not([type=checkbox]):not([type=radio]):not(.title-input),textarea,select,.search input,.board-filters select{font-size:16px}.search,.board-filters select{min-height:44px}.board-filters select{max-width:160px}.button.small{min-height:44px}.viewer-toolbar{flex-wrap:wrap}.viewer-toolbar>span{min-width:0;overflow-wrap:anywhere}}
+.reply-actions{justify-content:flex-end}.comment-text{white-space:pre-wrap;overflow-wrap:anywhere}.comment-compose{max-width:900px}.comment-input{display:block;box-sizing:border-box;width:calc(100% - 40px);min-height:140px;resize:vertical;margin:20px;font:inherit;line-height:1.7}.comment-compose .compose-identity{padding:16px 20px}
+.comment-reply{margin-inline-start:calc(var(--reply-depth)*28px);padding-inline-start:16px;border-inline-start:2px solid var(--line)}.comment .reply-to{background:none;padding:0;color:var(--muted);font-size:12px;margin-bottom:8px;overflow-wrap:anywhere}.comment .reply-to:hover{text-decoration:underline}.comment .post-meta strong{overflow-wrap:anywhere}.comment .post-meta .actions{flex-shrink:0}
+@media(max-width:680px){.comment-reply{margin-inline-start:calc(var(--reply-depth)*16px);padding-inline-start:12px}.comment .post-meta .actions{gap:12px}}
+.comment{padding-block:13px}.comment .post-meta{gap:5px 12px;margin-bottom:6px}.comment .reply-to{margin:0}.author-badge{font-size:11px;font-weight:600;color:var(--accent);border:1px solid var(--line);padding:0 5px;border-radius:2px}.comments [data-comment-total]{color:var(--accent);font-variant-numeric:tabular-nums}.inline-answer{margin-top:14px;padding:16px;background:var(--panel);border:1px solid var(--line)}.inline-answer h2{font-size:14px;margin:0 0 6px;overflow-wrap:anywhere}.reply-preview{font-size:13px;color:var(--muted);margin:0 0 14px;padding-left:10px;border-left:2px solid var(--line);white-space:pre-wrap;overflow-wrap:anywhere;max-height:5.4em;overflow:auto}.reply-draft-hint{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;font-size:12px;color:var(--muted);margin:10px 0}.reply-draft-hint .plain-button{color:var(--accent)}.reply-form textarea{display:block;margin-top:12px}.comment .actions .plain-button{min-height:32px}.reply-form [role=alert]:empty{display:none}
+@media(max-width:680px){.inline-answer{padding:12px}.comment .actions .plain-button{min-height:44px}.comment .post-meta{column-gap:10px}.inline-answer .identity label{display:block}.inline-answer .identity input{display:block;width:100%;max-width:none;margin-top:5px}.reply-draft-hint .plain-button{min-height:44px}}
+.trash-toolbar{flex-wrap:wrap;margin-bottom:18px}.trash-row .check-field{margin:0;flex-shrink:0}.trash-description small{overflow-wrap:anywhere}.trash-row input[type=checkbox],.trash-toolbar input[type=checkbox]{width:20px;height:20px}.trash-description{flex:1;min-width:0}.admin-section .prose{overflow-wrap:anywhere}@media(max-width:680px){.admin-row{flex-wrap:wrap;gap:12px}.admin-row>div{flex-basis:100%}.admin-row.trash-row{display:grid;grid-template-columns:24px minmax(0,1fr)}.trash-row>[data-restore]{grid-column:2;justify-self:start}.trash-row strong{white-space:normal}.trash-toolbar{align-items:stretch}.trash-toolbar .check-field{width:100%}.trash-toolbar .button{flex:1;white-space:normal}}
+
+[data-list-write]{display:inline-flex;justify-self:end}.page-heading [data-list-write]:empty{display:none}
+
+/* Keep TinyMCE at its final position while its loading message is visible. */
+.editor-mount{position:relative;min-height:460px}.editor-mount>.editor-loading{position:absolute;inset:0;z-index:1;background:#fff}
+
+/* Title and art share a shallow scene; the post list remains the main view. */
+.community-heading{position:relative;display:flex;align-items:center;height:clamp(140px,calc((100vw - 96px)/6),200px);min-height:0;padding:24px 32px;margin-bottom:16px;overflow:hidden;border-radius:2px;border-bottom:1px solid #9eae8b;background:#faf4e7}
+.community-heading__copy{position:relative;z-index:1;min-width:0;width:min(62%,560px)}.community-heading__title{display:flex;align-items:center;gap:18px}.community-heading h1{font-size:28px;color:#203d2f;margin:0}.community-heading p{font-size:13px;line-height:1.55;color:#4d6451;margin:6px 0 0}
+.community-heading__art{position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none;user-select:none}
+.community-heading__art img{display:block;width:100%;height:100%;object-fit:cover;object-position:right center}
+.community-heading__art:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#faf4e7fa 0%,#faf4e7f2 18%,#faf4e7a6 30%,#faf4e738 41%,#faf4e700 53%)}
+.information-page{max-width:820px;margin:10px auto 45px}.information-page h1{font-size:28px;margin-bottom:24px}.information-page>.prose{background:#fff;border-top:3px solid #66824c;padding:28px 32px;margin-bottom:24px}.information-page>.prose>:first-child{margin-top:0}.guidelines-copy,.terms-inline.prose{white-space:normal}.terms-inline.prose{font-size:14px}.terms-inline.prose h2{font-size:18px}
+.file-attachments,.post-attachments{border:1px solid #d7ddd1;border-radius:4px;background:#fafbf8;padding:16px 20px;margin:20px 0}.file-attachment-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.file-attachment-heading>[data-attachment-count]{margin-left:auto;color:#667564;font-size:13px}.file-attachments ul,.post-attachments ul{list-style:none;margin:12px 0 0;padding:0}.file-attachment-items li,.post-attachments li+li{border-top:1px solid #e0e5db}.file-attachment-items li{display:flex;align-items:center;gap:12px;padding:12px 0}.file-attachment-name{min-width:0;flex:1;overflow-wrap:anywhere}.file-attachment-name small{display:block;color:#61705c;font-size:12px;margin-top:4px}.file-attachment-error{color:#9b3c2e;font-size:13px;margin-bottom:0;overflow-wrap:anywhere}.file-attachment-error:empty{display:none}.post-attachments h2{font-size:15px;margin:0 0 6px}.post-attachments a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;color:#244b39;text-decoration:none}.post-attachments a:hover,.post-attachments a:focus-visible{text-decoration:underline}.post-attachments a>span{min-width:0;overflow-wrap:anywhere}.post-attachments a>small{flex-shrink:0;color:#61705c;font-size:12px}
+@media(max-width:680px){.file-attachments,.post-attachments{padding:14px}.file-attachment-items li{align-items:flex-start;flex-wrap:wrap}.post-attachments a{align-items:flex-start;flex-direction:column;gap:3px}.file-attachment-items .actions{gap:8px}}
+@media(max-width:680px){.information-page h1{font-size:26px}.information-page>.prose{padding:22px 18px}}
+.community-heading .actions{flex-wrap:nowrap}.community-heading .actions:has([data-list-write]:empty){display:none}
+@media(max-width:680px){
+ .community-heading{display:flex;align-items:center;height:clamp(152px,48vw,224px);padding:16px 12px;margin-bottom:14px}
+ .community-heading__art{inset:0;width:auto}
+ .community-heading__art img{width:100%;height:100%;object-fit:cover;object-position:center}
+ .community-heading__art:after{background:linear-gradient(90deg,#faf4e7fa 0%,#faf4e7ed 22%,#faf4e7b3 34%,#faf4e74d 44%,#faf4e700 58%)}
+ .community-heading__copy{width:46%}.community-heading__title{gap:0}.community-heading h1{font-size:clamp(20px,5.9vw,24px);line-height:1.2;margin:0}.community-heading p{display:none}
+ .community-heading .actions{display:none}
+}
+[data-community-list-preview]~.loading{display:none}
+html[data-community-initial-list] [data-community-list-preview]{display:none}
+html[data-community-initial-list] [data-community-list-preview]~.loading{display:block}
+html[data-community-initial-list="ko"] [data-community-list-preview="ko"],html[data-community-initial-list="en"] [data-community-list-preview="en"]{display:block}
+html[data-community-initial-list="ko"] [data-community-list-preview="ko"]~.loading,html[data-community-initial-list="en"] [data-community-list-preview="en"]~.loading{display:none}
+</style><style data-entry-style="/gw2-community-host-benchmark/community/content.css">figure[data-align=center]>img,figure[data-align=center]>.image-open{margin-inline:auto}figure[data-align=right]>img,figure[data-align=right]>.image-open{margin-left:auto;margin-right:0}figure[data-align=left]>img,figure[data-align=left]>.image-open{margin-left:0;margin-right:auto}
+:is(.prose,.mce-content-body) [data-font-size="12"]{font-size:12px}:is(.prose,.mce-content-body) [data-font-size="14"]{font-size:14px}:is(.prose,.mce-content-body) [data-font-size="16"]{font-size:16px}:is(.prose,.mce-content-body) [data-font-size="18"]{font-size:18px}:is(.prose,.mce-content-body) [data-font-size="20"]{font-size:20px}:is(.prose,.mce-content-body) [data-font-size="24"]{font-size:24px}:is(.prose,.mce-content-body) [data-font-size="28"]{font-size:28px}:is(.prose,.mce-content-body) [data-font-size="32"]{font-size:32px}:is(.prose,.mce-content-body) [data-font-size="36"]{font-size:36px}:is(.prose,.mce-content-body) [data-font-size="48"]{font-size:48px}
+.mce-content-body[data-mce-placeholder]::before{left:34px!important;right:34px!important}@media(max-width:680px){.mce-content-body[data-mce-placeholder]::before{left:18px!important;right:18px!important}}
+.prose,.mce-content-body{font-family:'Noto Sans KR Variable','Noto Sans KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:16px;line-height:1.85;color:#3a4740;overflow-wrap:anywhere}.prose p,.mce-content-body p{margin:0 0 1.15em}.prose h2,.mce-content-body h2{font-size:24px;line-height:1.5;margin:1.6em 0 .7em;color:#192a22}.prose h3,.mce-content-body h3{font-size:20px;margin:1.5em 0 .6em}.prose a,.mce-content-body a{color:#365b42;text-decoration:underline;text-underline-offset:3px}.prose img,.mce-content-body img{max-width:100%;height:auto}.prose figure,.mce-content-body figure{margin:24px auto;max-width:100%;clear:both}.prose figure[data-width="50"],.mce-content-body figure[data-width="50"]{width:50%}.prose figure[data-width="75"],.mce-content-body figure[data-width="75"]{width:75%}.prose figure[data-width="100"],.mce-content-body figure[data-width="100"]{width:100%}.prose figure[data-align=left],.mce-content-body figure[data-align=left]{margin-left:0;margin-right:auto}.prose figure[data-align=right],.mce-content-body figure[data-align=right]{margin-left:auto;margin-right:0}.prose figcaption,.mce-content-body figcaption{font-size:13px;text-align:center;color:#5c695f;padding:8px}.prose blockquote,.mce-content-body blockquote{margin:24px 0;padding:14px 22px;border-left:3px solid #71895c;background:#eff3e8}.prose blockquote p:last-child,.mce-content-body blockquote p:last-child{margin-bottom:0}.prose table,.mce-content-body table{border-collapse:collapse;max-width:100%;width:100%;table-layout:fixed}.prose th,.prose td,.mce-content-body th,.mce-content-body td{border:1px solid #d9dfd3;padding:8px 12px;overflow-wrap:anywhere}.prose th,.mce-content-body th{background:#eff1e9}.prose td p:last-child,.prose th p:last-child,.mce-content-body td p:last-child,.mce-content-body th p:last-child{margin-bottom:0}.prose pre{white-space:pre-wrap;padding:16px;background:#eff1e9;font-size:14px}.mce-content-body{padding:26px 34px;margin:0;background:#fff}.mce-content-body:focus{outline:none}@media(max-width:680px){.mce-content-body{padding:22px 18px}.prose{font-size:15px}.prose h2{font-size:21px}.prose table{font-size:13px}.prose th,.prose td{padding:7px}.prose figure{max-width:100%}}
+</style><style data-entry-style="/gw2-community-host-benchmark/community/guide-shell.css">/* Renewed guide shell: design-prototypes/renewal.css + portal-polish.css (main 8ba8d4c5).
+   Scoped styles keep editor, account and board content independent. */
+/* The route landmark receives programmatic focus; controls retain their focus rings. */
+main.shell:focus{outline:none}
+.guide-header{position:relative;z-index:500;background:#14231f;color:#e6ecdf}
+.guide-header-inner{max-width:1600px;min-height:80px;margin:auto;padding:0 32px;display:flex;align-items:center;gap:28px}
+.guide-brand{display:flex;align-items:center;gap:12px;flex-shrink:0;height:80px}
+.guide-brand-mark{font:900 29px/1 Arial,sans-serif;letter-spacing:-2px;color:#e6ecdb}
+.guide-brand-title{font-size:13px;font-weight:700;line-height:1.5;border-left:1px solid #536054;padding-left:12px;letter-spacing:-.03em;white-space:nowrap}
+.guide-navigation{display:flex;justify-content:center;flex:1;min-width:0;gap:6px}
+.guide-community{display:flex;align-items:center;align-self:center;height:80px;padding:0 9px;white-space:nowrap;font-size:13px;font-weight:700;color:#e3edc9;text-decoration:none}
+.guide-community:hover,.guide-community:focus-visible{color:#fff}
+.guide-section>summary{display:flex;align-items:center;height:80px;padding:0 9px;font-size:13px;font-weight:500;white-space:nowrap;list-style:none;cursor:pointer;position:relative;color:#d9e1d5}
+.guide-section>summary::-webkit-details-marker{display:none}
+.guide-section>summary:after{content:'';position:absolute;bottom:19px;left:9px;right:9px;height:2px;background:#d9e9b0;transform:scaleX(0);transform-origin:left;transition:transform 180ms cubic-bezier(.22,.75,.25,1)}
+.guide-section>summary:hover,.guide-section[open]>summary{color:#fff}
+.guide-section>summary:hover:after,.guide-section[open]>summary:after{transform:scaleX(1)}
+.guide-languages{display:flex;align-items:center;gap:3px;flex-shrink:0;font-size:11px;font-weight:700}
+.guide-languages a{min-width:32px;min-height:44px;padding:12px 7px;text-align:center;color:#b8c6af}
+.guide-languages a[aria-current]{color:#eff3e8;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:10px}
+.guide-menu-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:10px;background:none;border:0;color:inherit}
+.guide-menu-toggle svg{width:22px;height:22px}
+.guide-panel{position:absolute;top:100%;left:0;right:0;background:#192d24;border-top:1px solid #ffffff1c;box-shadow:0 20px 34px #07171026;max-height:calc(100dvh - 80px);overflow:auto;overscroll-behavior:contain}
+.guide-panel-inner{max-width:1440px;margin:auto;padding:32px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:42px}
+.guide-panel-intro>p:first-child{font-size:10px;letter-spacing:.12em;color:#bccdaa}
+.guide-panel h2{font-size:24px;line-height:1.4;color:#f0f5e9;margin-bottom:16px}
+.guide-panel-intro p{font-size:12px;color:#bdcbb7;line-height:1.8}
+.guide-panel-intro a{display:inline-block;margin-top:10px;font-size:12px;color:#d9e9b0}
+.guide-groups{display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr));gap:24px}
+.guide-groups h3{color:#dbe9cc;font-size:13px;line-height:1.6;margin:0 0 12px}
+.guide-groups ul{list-style:none;padding:0;margin:0}
+.guide-groups a{display:block;padding:7px 0;color:#c3d0ba;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+.guide-panel a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.community-utility{border-bottom:1px solid var(--line);background:var(--panel)}
+.community-utility-inner{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:5px}
+.community-home{font-size:13px;font-weight:700;color:var(--strong);white-space:nowrap}
+.community-utility .account-nav{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px 18px;font-size:12px;min-width:0}
+.community-utility .account-nav a,.community-utility .account-nav button{min-height:36px;display:inline-flex;align-items:center}
+.community-utility .account-nav a[href="#account"]{display:block;line-height:36px}
+.community-utility .account-nav .join-link{display:inline-flex}
+.guide-footer{background:#14231f;color:#bec8b9}
+.guide-footer-inner,.guide-footer-bottom{width:calc(100% - 96px);max-width:1280px;margin-inline:auto}
+.guide-footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;padding-block:48px 38px}
+.guide-footer-brand{font-size:21px;font-weight:700;letter-spacing:-.035em;line-height:1.5;color:#eff3e8}
+.guide-footer h2{font-size:12px;font-weight:600;letter-spacing:.02em;line-height:1.6;color:#aebda5;margin:0 0 17px}
+.guide-footer p{font-size:13px;line-height:1.9;color:#b8c6af;margin:12px 0 0}
+.guide-footer .guide-owner-name{font-size:16px;color:#eff3e8;margin:0}
+.guide-owner-id{color:#dce5d4;font-variant-numeric:tabular-nums}
+.guide-footer-languages,.guide-footer-links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:12px}
+.guide-footer-languages a{padding-block:4px;color:#b8c6af}
+.guide-footer-languages [aria-current]{color:#eff3e8;text-decoration:underline;text-underline-offset:6px}
+.guide-footer-resources>a{display:block;width:fit-content;font-size:13px;line-height:1.8;color:#dce5d4;padding:4px 0;margin-bottom:5px}
+.guide-footer a:hover{color:#d9e9b0;text-decoration:underline;text-underline-offset:5px}
+.guide-footer-bottom{border-top:1px solid #42503c;padding:22px 0;text-align:center}
+.guide-footer-bottom p{font-size:11px;color:#a7b4a1;margin:0;line-height:1.9}
+@media(min-width:1201px) and (max-width:1350px){.guide-brand-title{display:none}.guide-header-inner{gap:20px;padding-inline:24px}.guide-section>summary{font-size:12px;padding-inline:7px}.guide-navigation{gap:2px}}
+@media(max-width:1200px){
+ .guide-header-inner{justify-content:space-between;gap:12px}.guide-languages{margin-left:auto}.guide-menu-toggle{display:flex}
+ .guide-navigation{display:none;position:absolute;top:100%;left:0;right:0;background:#192d24;border-top:1px solid #ffffff20;max-height:calc(100dvh - 80px);overflow:auto;overscroll-behavior:contain;box-shadow:0 20px 34px #07171026;padding:10px 24px 22px}
+ .menu-open .guide-navigation{display:block}.guide-section{border-bottom:1px solid #ffffff20}
+ .guide-community{height:52px;padding:0 8px;font-size:14px;border-bottom:1px solid #ffffff20}
+ .guide-section>summary{height:52px;padding:0 8px;font-size:14px;justify-content:space-between}.guide-section>summary:after{content:'+';position:static;transform:none;background:none;height:auto;font-size:18px}.guide-section[open]>summary:after{content:'−'}
+ .guide-panel{position:static;box-shadow:none;border:0;max-height:none;overflow:visible}.guide-panel-inner{display:block;padding:8px 8px 24px}.guide-panel-intro h2,.guide-panel-intro>p:first-child{display:none}.guide-panel-intro a{margin:0 0 24px}.guide-groups{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+}
+@media(max-width:760px){
+ .guide-header-inner{padding:0 16px;min-height:68px;gap:10px}.guide-brand{height:68px;gap:10px}.guide-brand-mark{font-size:26px}.guide-brand-title{font-size:12px;padding-left:10px}.guide-languages a{min-width:28px;padding-inline:4px}.guide-navigation{max-height:calc(100dvh - 68px);padding-inline:20px}
+ .community-utility-inner{gap:10px}.community-utility .account-nav{gap:5px 12px;flex:0 1 auto}.community-utility .account-nav a[href="#account"]{max-width:84px}
+ .guide-footer-inner,.guide-footer-bottom{width:calc(100% - 40px)}.guide-footer-inner{grid-template-columns:1fr 1fr;gap:30px 24px;padding-block:34px 28px}.guide-footer-about{grid-column:1/-1}.guide-footer-brand{font-size:20px}.guide-footer h2{font-size:11px;margin-bottom:12px}.guide-footer p,.guide-footer-resources>a{font-size:12px}.guide-footer-bottom{text-align:left;padding:20px 0}.guide-footer-bottom p+p{margin-top:8px}
+}
+@media(max-width:360px){.guide-brand-title{display:none}.guide-groups{grid-template-columns:1fr}}
+</style>
+<meta name="robots" content="noindex, nofollow"></head>
+<body><p style="margin:0;padding:6px 16px;text-align:center;background:#eff3e8;color:#263b2c;font:14px sans-serif">호스팅 속도 비교용 게시판 · 테스트 데이터 · 글쓰기는 편집기 체험용</p>
+  <a class="skip" href="#main" data-ui="본문으로 건너뛰기">본문으로 건너뛰기</a>
+  <header class="guide-header"><div class="guide-header-inner">
+    <a class="guide-brand" data-guide href="https://guide.guildwar.win/" data-ui-label="길드워2 입문 가이드 홈" aria-label="길드워2 입문 가이드 홈"><span class="guide-brand-mark" aria-hidden="true">GW2</span><span class="guide-brand-title" data-ui="입문 가이드">입문 가이드</span></a>
+    <nav class="guide-navigation" id="guide-navigation" aria-label="주 내비게이션" data-ui-label="주 내비게이션" data-guide-locale="ko"><details class="guide-section"><summary>시작하기</summary><div class="guide-panel"><div class="guide-panel-inner"><div class="guide-panel-intro"><p>가이드 둘러보기</p><h2>시작하기</h2><p>로그인 직후부터 80레벨 전까지. 처음 막히는 순간마다 답합니다.</p><a href="https://guide.guildwar.win/start/first-30-minutes/?lang=ko">섹션 시작 페이지 ↗</a></div><div class="guide-groups" style="--columns:4"><section><h3>게임 소개</h3><ul><li><a href="https://guide.guildwar.win/start/account/what-is-gw2/?lang=ko">길드워2란 어떤 게임인가</a></li><li><a href="https://guide.guildwar.win/start/intro/features/?lang=ko">길드워2의 특징</a></li></ul></section><section><h3>계정 &amp; 구매</h3><ul><li><a href="https://guide.guildwar.win/start/account/anet-vs-steam/?lang=ko">ArenaNet 계정 vs Steam 계정</a></li><li><a href="https://guide.guildwar.win/start/account/free-to-play/?lang=ko">무료로 얼마나 즐길 수 있나</a></li><li><a href="https://guide.guildwar.win/start/account/expansion-order/?lang=ko">확장팩 구매 순서 추천</a></li><li><a href="https://guide.guildwar.win/start/account/living-world/?lang=ko">리빙 월드란 무엇인가</a></li><li><a href="https://guide.guildwar.win/start/account/level-boost/?lang=ko">레벨 80 부스트: 써야 하나</a></li></ul></section><section><h3>첫 캐릭터</h3><ul><li><a href="https://guide.guildwar.win/start/character/server-id/?lang=ko">서버 선택과 아이디</a></li><li><a href="https://guide.guildwar.win/start/character/creation/?lang=ko">캐릭터 생성 가이드</a></li><li><a href="https://guide.guildwar.win/start/character/first-profession/?lang=ko">첫 직업 고르기</a></li></ul></section><section><h3>조작 &amp; 세팅</h3><ul><li><a href="https://guide.guildwar.win/start/settings/controls/?lang=ko">조작·전투 설정</a></li><li><a href="https://guide.guildwar.win/start/settings/graphics/?lang=ko">그래픽·UI·언어 설정</a></li></ul></section><section><h3>UI &amp; 화면 읽기</h3><ul><li><a href="https://guide.guildwar.win/start/ui/layout/?lang=ko">화면 구역 전체 해설</a></li><li><a href="https://guide.guildwar.win/start/ui/panels/?lang=ko">히어로 패널, 인벤토리, 메뉴</a></li><li><a href="https://guide.guildwar.win/start/ui/map/?lang=ko">월드 맵과 미니맵 읽기</a></li><li><a href="https://guide.guildwar.win/start/ui/chat/?lang=ko">채팅, 핑, 커뮤니케이션</a></li></ul></section><section><h3>처음 30분</h3><ul><li><a href="https://guide.guildwar.win/start/first-30-minutes/?lang=ko">지금 당장 시작: 처음 30분</a></li><li><a href="https://guide.guildwar.win/start/first-30-minutes/checklist/?lang=ko">로그인-to-플레이 체크리스트</a></li><li><a href="https://guide.guildwar.win/start/first-30-minutes/vendors/?lang=ko">상점, 구매, 판매</a></li></ul></section><section><h3>레벨 올리기</h3><ul><li><a href="https://guide.guildwar.win/start/leveling/what-to-do/?lang=ko">레벨 올리면서 뭘 해야 하나</a></li><li><a href="https://guide.guildwar.win/start/leveling/map-completion/?lang=ko">맵 완료(Map Completion)의 역할</a></li><li><a href="https://guide.guildwar.win/start/leveling/map-objectives/?lang=ko">하트, 웨이포인트, 비스타</a></li></ul></section></div></div></div></details><details class="guide-section"><summary>전투 &amp; 용어</summary><div class="guide-panel"><div class="guide-panel-inner"><div class="guide-panel-intro"><p>가이드 둘러보기</p><h2>전투 &amp; 용어</h2><p>스킬 구조부터 캐릭터가 약한 이유까지. 전투 언어를 쌓습니다.</p><a href="https://guide.guildwar.win/combat/basics/boons-conditions/?lang=ko">섹션 시작 페이지 ↗</a></div><div class="guide-groups" style="--columns:3"><section><h3>전투 기초</h3><ul><li><a href="https://guide.guildwar.win/combat/basics/skill-bar/?lang=ko">스킬바와 무기 스킬 구조</a></li><li><a href="https://guide.guildwar.win/combat/basics/dodge/?lang=ko">회피, 다운 상태, 부활</a></li><li><a href="https://guide.guildwar.win/combat/basics/boons-conditions/?lang=ko">버프(Boon)와 디버프(Condition)</a></li><li><a href="https://guide.guildwar.win/combat/basics/cc-breakbar/?lang=ko">CC와 브레이크바</a></li><li><a href="https://guide.guildwar.win/combat/basics/combo/?lang=ko">콤보 필드와 피니셔</a></li><li><a href="https://guide.guildwar.win/combat/basics/positioning/?lang=ko">타겟팅, 포지셔닝, 살아남기</a></li><li><a href="https://guide.guildwar.win/combat/basics/movement-speed/?lang=ko">이동 속도 시스템</a></li></ul></section><section><h3>빌드 기초</h3><ul><li><a href="https://guide.guildwar.win/combat/build/why-weak/?lang=ko">왜 내 캐릭터가 약한가</a></li><li><a href="https://guide.guildwar.win/combat/build/stats/?lang=ko">스탯과 스탯이 바꾸는 것들</a></li><li><a href="https://guide.guildwar.win/combat/build/traits/?lang=ko">특성(Trait)과 빌드 패널</a></li><li><a href="https://guide.guildwar.win/combat/build/weapons/?lang=ko">무기 역할과 첫인상</a></li><li><a href="https://guide.guildwar.win/combat/build/utility-skills/?lang=ko">힐, 유틸리티, 엘리트 스킬</a></li></ul></section><section><h3>빠른 참조</h3><ul><li><a href="https://guide.guildwar.win/combat/reference/boons/?lang=ko">버프(Boon) 목록과 효과</a></li><li><a href="https://guide.guildwar.win/combat/reference/conditions/?lang=ko">디버프(Condition) 목록과 효과</a></li><li><a href="https://guide.guildwar.win/combat/reference/glossary/?lang=ko">길드워2 용어 사전</a></li></ul></section></div></div></div></details><details class="guide-section"><summary>성장 &amp; 장비</summary><div class="guide-panel"><div class="guide-panel-inner"><div class="guide-panel-intro"><p>가이드 둘러보기</p><h2>성장 &amp; 장비</h2><p>80 도달 이후 공황 해소. 첫 목표부터 어센디드까지.</p><a href="https://guide.guildwar.win/progression/gear/tiers/?lang=ko">섹션 시작 페이지 ↗</a></div><div class="guide-groups" style="--columns:4"><section><h3>레벨 80 첫째 주</h3><ul><li><a href="https://guide.guildwar.win/progression/first-week/just-hit-80/?lang=ko">레벨 80 도달 직후</a></li><li><a href="https://guide.guildwar.win/progression/first-week/hero-points/?lang=ko">히어로 포인트와 엘리트 특성화</a></li><li><a href="https://guide.guildwar.win/progression/first-week/returning-player/?lang=ko">복귀 플레이어 체크리스트</a></li></ul></section><section><h3>일과 &amp; 주간 루틴</h3><ul><li><a href="https://guide.guildwar.win/progression/routine/wizards-vault/?lang=ko">위자드 볼트 기초</a></li><li><a href="https://guide.guildwar.win/progression/routine/dailies/?lang=ko">일일, 주간, 리셋 데이</a></li><li><a href="https://guide.guildwar.win/progression/routine/low-stress/?lang=ko">초보자를 위한 부담 없는 루틴</a></li><li><a href="https://guide.guildwar.win/progression/routine/can-ignore/?lang=ko">무시해도 되는 것들</a></li></ul></section><section><h3>장비 성장</h3><ul><li><a href="https://guide.guildwar.win/progression/gear/tiers/?lang=ko">장비 등급과 첫 목표</a></li><li><a href="https://guide.guildwar.win/progression/gear/first-exotic/?lang=ko">첫 엑조틱 세트 구하기</a></li><li><a href="https://guide.guildwar.win/progression/gear/winterberry/?lang=ko">겨울딸기 파밍 가이드</a></li><li><a href="https://guide.guildwar.win/progression/gear/exotic-to-ascended/?lang=ko">엑조틱에서 어센디드로</a></li><li><a href="https://guide.guildwar.win/progression/gear/ascended-routes/?lang=ko">어센디드 획득 루트 비교</a></li><li><a href="https://guide.guildwar.win/progression/gear/stat-swap/?lang=ko">스탯 변경과 업그레이드</a></li></ul></section><section><h3>마스터리 가이드</h3><ul><li><a href="https://guide.guildwar.win/progression/systems/masteries/?lang=ko">계정 성장의 핵심: 마스터리</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/central-tyria/?lang=ko">Central Tyria</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/heart-of-thorns/?lang=ko">Heart of Thorns</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/path-of-fire/?lang=ko">Path of Fire</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/icebrood-saga/?lang=ko">Icebrood Saga</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/end-of-dragons/?lang=ko">End of Dragons</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/secrets-of-the-obscure/?lang=ko">Secrets of the Obscure</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/janthir-wilds/?lang=ko">Janthir Wilds</a></li><li><a href="https://guide.guildwar.win/progression/systems/masteries/visions-of-eternity/?lang=ko">Visions of Eternity</a></li></ul></section><section><h3>계정 성장 시스템</h3><ul><li><a href="https://guide.guildwar.win/progression/systems/mounts/?lang=ko">마운트: 언제, 어떻게</a></li><li><a href="https://guide.guildwar.win/progression/systems/jade-bot/?lang=ko">제이드 봇</a></li><li><a href="https://guide.guildwar.win/progression/systems/homestead/?lang=ko">홈스테드</a></li></ul></section></div></div></div></details><details class="guide-section"><summary>계정 &amp; 경제</summary><div class="guide-panel"><div class="guide-panel-inner"><div class="guide-panel-intro"><p>가이드 둘러보기</p><h2>계정 &amp; 경제</h2><p>가방 정리, 거래소, 젬스토어. 골드 걱정 없이 시작하는 법.</p><a href="https://guide.guildwar.win/economy/inventory/storage/?lang=ko">섹션 시작 페이지 ↗</a></div><div class="guide-groups" style="--columns:4"><section><h3>가방 정리</h3><ul><li><a href="https://guide.guildwar.win/economy/inventory/storage/?lang=ko">은행, 재료 창고, 공유 보관함</a></li><li><a href="https://guide.guildwar.win/economy/inventory/access/?lang=ko">어디서든 은행, 거래소 편하게 쓰기</a></li><li><a href="https://guide.guildwar.win/economy/inventory/clutter-list/?lang=ko">버려도 되는 아이템 목록</a></li><li><a href="https://guide.guildwar.win/economy/inventory/salvage-kits/?lang=ko">분해 키트 종류와 사용법</a></li></ul></section><section><h3>거래 &amp; 화폐</h3><ul><li><a href="https://guide.guildwar.win/economy/trading/trading-post/?lang=ko">거래소(Trading Post) 기초</a></li><li><a href="https://guide.guildwar.win/economy/trading/currencies/?lang=ko">지갑과 주요 화폐 종류</a></li><li><a href="https://guide.guildwar.win/economy/trading/map-currencies/?lang=ko">맵 화폐와 어센디드 장신구</a></li><li><a href="https://guide.guildwar.win/economy/gemstore/basics/?lang=ko">젬스토어 기초와 추천 아이템</a></li><li><a href="https://guide.guildwar.win/economy/gemstore/free-outfits/?lang=ko">저렴한 아웃핏 얻는 법</a></li><li><a href="https://guide.guildwar.win/economy/trading/mail/?lang=ko">우편함과 수신함</a></li><li><a href="https://guide.guildwar.win/economy/trading/gold-farming/?lang=ko">골드, 어디서 어떻게 버나</a></li></ul></section><section><h3>크래프팅 기초</h3><ul><li><a href="https://guide.guildwar.win/economy/crafting/when-to-start/?lang=ko">크래프팅은 언제 시작하나</a></li><li><a href="https://guide.guildwar.win/economy/crafting/leveling/?lang=ko">크래프팅 레벨업 준비</a></li><li><a href="https://guide.guildwar.win/economy/crafting/gathering/?lang=ko">채집 도구와 재료 관리</a></li></ul></section><section><h3>외부 도구</h3><ul><li><a href="https://guide.guildwar.win/economy/tools/api-key/?lang=ko">API 키 발급 방법</a></li><li><a href="https://guide.guildwar.win/economy/tools/gw2efficiency/?lang=ko">API 활용법 (위키·이피전시·TacO)</a></li><li><a href="https://guide.guildwar.win/economy/tools/wiki/?lang=ko">위키 빠르게 검색하는 법</a></li><li><a href="https://guide.guildwar.win/economy/tools/steam-faq/?lang=ko">Steam 계정 FAQ</a></li></ul></section></div></div></div></details><details class="guide-section"><summary>컨텐츠 &amp; 파티</summary><div class="guide-panel"><div class="guide-panel-inner"><div class="guide-panel-intro"><p>가이드 둘러보기</p><h2>컨텐츠 &amp; 파티</h2><p>오픈 월드부터 레이드까지. 다른 플레이어와 함께하는 법.</p><a href="https://guide.guildwar.win/content/open-world/events/?lang=ko">섹션 시작 페이지 ↗</a></div><div class="guide-groups" style="--columns:4"><section><h3>오픈 월드</h3><ul><li><a href="https://guide.guildwar.win/content/open-world/events/?lang=ko">다이나믹 이벤트란</a></li><li><a href="https://guide.guildwar.win/content/open-world/meta-events/?lang=ko">메타 이벤트란</a></li><li><a href="https://guide.guildwar.win/content/open-world/world-bosses/?lang=ko">월드 보스: 찾기와 타이머</a></li><li><a href="https://guide.guildwar.win/content/open-world/commander/?lang=ko">커맨더와 컨텐츠 찾기</a></li><li><a href="https://guide.guildwar.win/content/open-world/jumping-puzzles/?lang=ko">점핑 퍼즐과 숨겨진 모험</a></li></ul></section><section><h3>파티 &amp; 길드</h3><ul><li><a href="https://guide.guildwar.win/content/groups/party-squad/?lang=ko">파티와 스쿼드 구조</a></li><li><a href="https://guide.guildwar.win/content/groups/lfg/?lang=ko">LFG와 그룹 소통</a></li><li><a href="https://guide.guildwar.win/content/groups/guild/?lang=ko">길드: 찾기와 활용</a></li></ul></section><section><h3>인스턴스 PvE</h3><ul><li><a href="https://guide.guildwar.win/content/instanced/overview/?lang=ko">인스턴스 PvE 한눈에 보기</a></li><li><a href="https://guide.guildwar.win/content/instanced/dungeons/?lang=ko">던전 기초</a></li><li><a href="https://guide.guildwar.win/content/instanced/fractals/?lang=ko">프랙탈 기초</a></li><li><a href="https://guide.guildwar.win/content/instanced/raids/?lang=ko">레이드 &amp; 레이드 인카운터</a></li><li><a href="https://guide.guildwar.win/content/instanced/raids/guides/?lang=ko">레이드 공략</a></li><li><a href="https://guide.guildwar.win/content/instanced/convergences/?lang=ko">컨버전스</a></li></ul></section><section><h3>경쟁 모드</h3><ul><li><a href="https://guide.guildwar.win/content/competitive/wvw/?lang=ko">WvW 기초</a></li><li><a href="https://guide.guildwar.win/content/competitive/wvw-abilities/?lang=ko">WvW 어빌리티 가이드</a></li><li><a href="https://guide.guildwar.win/content/competitive/pvp/?lang=ko">PvP 기초와 시작 시기</a></li></ul></section></div></div></div></details><details class="guide-section"><summary>직업 선택</summary><div class="guide-panel"><div class="guide-panel-inner"><div class="guide-panel-intro"><p>가이드 둘러보기</p><h2>직업 선택</h2><p>9개 직업 비교와 입문 추천. 플레이 스타일로 고르세요.</p><a href="https://guide.guildwar.win/professions/?lang=ko">섹션 시작 페이지 ↗</a></div><div class="guide-groups" style="--columns:3"><section><h3>Heavy 방어구</h3><ul><li><a href="https://guide.guildwar.win/professions/warrior/?lang=ko">워리어 (Warrior)</a></li><li><a href="https://guide.guildwar.win/professions/guardian/?lang=ko">가디언 (Guardian)</a></li><li><a href="https://guide.guildwar.win/professions/revenant/?lang=ko">레버넌트 (Revenant)</a></li></ul></section><section><h3>Medium 방어구</h3><ul><li><a href="https://guide.guildwar.win/professions/ranger/?lang=ko">레인저 (Ranger)</a></li><li><a href="https://guide.guildwar.win/professions/thief/?lang=ko">시프 (Thief)</a></li><li><a href="https://guide.guildwar.win/professions/engineer/?lang=ko">엔지니어 (Engineer)</a></li></ul></section><section><h3>Light 방어구</h3><ul><li><a href="https://guide.guildwar.win/professions/necromancer/?lang=ko">네크로맨서 (Necromancer)</a></li><li><a href="https://guide.guildwar.win/professions/mesmer/?lang=ko">메스머 (Mesmer)</a></li><li><a href="https://guide.guildwar.win/professions/elementalist/?lang=ko">엘리멘탈리스트 (Elementalist)</a></li></ul></section></div></div></div></details><details class="guide-section"><summary>편의 도구</summary><div class="guide-panel"><div class="guide-panel-inner"><div class="guide-panel-intro"><p>가이드 둘러보기</p><h2>편의 도구</h2><p>애드온, 한글화, 유용한 외부 사이트를 소개합니다.</p><a href="https://guide.guildwar.win/tools/addons/what-is/?lang=ko">섹션 시작 페이지 ↗</a></div><div class="guide-groups" style="--columns:2"><section><h3>애드온 &amp; 도구</h3><ul><li><a href="https://guide.guildwar.win/tools/addons/what-is/?lang=ko">애드온이란?</a></li><li><a href="https://guide.guildwar.win/tools/addons/arcdps/?lang=ko">ArcDPS 설치와 사용법</a></li><li><a href="https://guide.guildwar.win/tools/addons/nexus/?lang=ko">Nexus 애드온 관리자</a></li><li><a href="https://guide.guildwar.win/tools/addons/blishhud/?lang=ko">Blish HUD 설치와 모듈</a></li><li><a href="https://guide.guildwar.win/tools/websites/?lang=ko">유용한 사이트</a></li></ul></section><section><h3>번역 · 플레이 도구</h3><ul><li><a href="https://guide.guildwar.win/tools/korean/patch/?lang=ko">길드워2 한글 패치</a></li><li><a href="https://guide.guildwar.win/tools/korean/intro/?lang=ko">CatBridge 소개</a></li><li><a href="https://guide.guildwar.win/tools/korean/install/?lang=ko">설치와 설정</a></li></ul></section></div></div></div></details><a class="guide-community" href="#list" aria-current="page">커뮤니티</a></nav>
+    <nav class="guide-languages" data-ui-label="언어 선택" aria-label="언어 선택"><a href="/community?lang=ko" data-locale="ko" lang="ko" hreflang="ko" aria-label="한국어">KO</a><a href="/en/community?lang=en" data-locale="en" lang="en" hreflang="en" aria-label="English">EN</a></nav>
+    <button class="guide-menu-toggle" type="button" aria-expanded="false" aria-controls="guide-navigation" aria-label="가이드 메뉴" data-ui-label="가이드 메뉴"><svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div></header>
+  <div class="community-utility"><div class="community-utility-inner shell"><a class="community-home" href="#list" data-ui="커뮤니티">커뮤니티</a><nav id="account-nav" class="account-nav" aria-label="회원 메뉴" data-ui-label="회원 메뉴"></nav></div></div>
+  <div id="service-state" class="service-state" hidden></div>
+  <main id="main" class="shell" tabindex="-1"><div data-community-list-preview="ko"><div class="page-heading community-heading" data-list-root><div class="community-heading__copy"><div class="community-heading__title"><h1>커뮤니티</h1><div class="actions"><span data-list-write></span></div></div><p>처음 오셨나요? 편하게 이야기 나눠요.</p></div>
+    <picture class="community-heading__art" aria-hidden="true"><source media="(min-width:681px)" srcset="/gw2-community-host-benchmark/community/art/community-panorama-960-cdd8e3d9fe11.webp 960w, /gw2-community-host-benchmark/community/art/community-panorama-1440-2ce54df2c6ce.webp 1440w, /gw2-community-host-benchmark/community/art/community-panorama-1920-ee56344e5239.webp 1920w" sizes="(max-width:1376px) calc(100vw - 96px), 1280px"><img src="/gw2-community-host-benchmark/community/art/community-mobile-unified-480-f245fe9463a3.webp" srcset="/gw2-community-host-benchmark/community/art/community-mobile-unified-480-f245fe9463a3.webp 480w, /gw2-community-host-benchmark/community/art/community-mobile-unified-960-197666124d82.webp 960w" sizes="calc(100vw - 36px)" width="960" height="480" alt="" loading="lazy" decoding="async" fetchpriority="low"></picture>
+    </div>
+    <div class="board-tools"><div class="board-filters"><span class="count">전체 글<span>20</span></span><span data-list-categories></span></div>
+    <form class="search" role="search"><input disabled name="q" type="search" aria-label="게시글 검색" placeholder="제목·본문·글쓴이 검색" value="" maxlength="40"><button type="submit" disabled>검색</button></form></div>
+    <table class="post-table"><caption class="sr-only">커뮤니티 게시글 목록</caption><thead><tr><th class="number-col" scope="col">번호</th><th class="title-col" scope="col">제목</th><th class="author-col" scope="col">글쓴이</th><th class="date-col" scope="col">작성일</th><th class="views-col" scope="col">조회</th><th class="votes-col" scope="col">추천</th></tr></thead><tbody><tr class=""><td class="number-col">20</td><td class="title-col"><a href="#post/24" data-post-id="24"><span class="category-label">자유</span>이미지가 포함된 테스트 글</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 20</span><span class="rec">추천 0</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">20</td><td class="votes-col">0</td></tr><tr class=""><td class="number-col">19</td><td class="title-col"><a href="#post/23" data-post-id="23"><span class="category-label">자유</span>커뮤니티 테스트 글 23</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 21</span><span class="rec">추천 1</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">21</td><td class="votes-col">1</td></tr><tr class=""><td class="number-col">18</td><td class="title-col"><a href="#post/22" data-post-id="22"><span class="category-label">자유</span>커뮤니티 테스트 글 22</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 22</span><span class="rec">추천 2</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">22</td><td class="votes-col">2</td></tr><tr class=""><td class="number-col">17</td><td class="title-col"><a href="#post/21" data-post-id="21"><span class="category-label">자유</span>커뮤니티 테스트 글 21</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 23</span><span class="rec">추천 0</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">23</td><td class="votes-col">0</td></tr><tr class=""><td class="number-col">16</td><td class="title-col"><a href="#post/20" data-post-id="20"><span class="category-label">자유</span>커뮤니티 테스트 글 20</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 24</span><span class="rec">추천 1</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">24</td><td class="votes-col">1</td></tr><tr class=""><td class="number-col">15</td><td class="title-col"><a href="#post/19" data-post-id="19"><span class="category-label">자유</span>커뮤니티 테스트 글 19</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 25</span><span class="rec">추천 2</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">25</td><td class="votes-col">2</td></tr><tr class=""><td class="number-col">14</td><td class="title-col"><a href="#post/18" data-post-id="18"><span class="category-label">자유</span>커뮤니티 테스트 글 18</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 26</span><span class="rec">추천 0</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">26</td><td class="votes-col">0</td></tr><tr class=""><td class="number-col">13</td><td class="title-col"><a href="#post/17" data-post-id="17"><span class="category-label">자유</span>커뮤니티 테스트 글 17</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 27</span><span class="rec">추천 1</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">27</td><td class="votes-col">1</td></tr><tr class=""><td class="number-col">12</td><td class="title-col"><a href="#post/16" data-post-id="16"><span class="category-label">자유</span>커뮤니티 테스트 글 16</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 28</span><span class="rec">추천 2</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">28</td><td class="votes-col">2</td></tr><tr class=""><td class="number-col">11</td><td class="title-col"><a href="#post/15" data-post-id="15"><span class="category-label">자유</span>커뮤니티 테스트 글 15</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 29</span><span class="rec">추천 0</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">29</td><td class="votes-col">0</td></tr><tr class=""><td class="number-col">10</td><td class="title-col"><a href="#post/14" data-post-id="14"><span class="category-label">자유</span>커뮤니티 테스트 글 14</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 30</span><span class="rec">추천 1</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">30</td><td class="votes-col">1</td></tr><tr class=""><td class="number-col">9</td><td class="title-col"><a href="#post/13" data-post-id="13"><span class="category-label">자유</span>커뮤니티 테스트 글 13</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 31</span><span class="rec">추천 2</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">31</td><td class="votes-col">2</td></tr><tr class=""><td class="number-col">8</td><td class="title-col"><a href="#post/12" data-post-id="12"><span class="category-label">자유</span>커뮤니티 테스트 글 12</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 32</span><span class="rec">추천 0</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">32</td><td class="votes-col">0</td></tr><tr class=""><td class="number-col">7</td><td class="title-col"><a href="#post/11" data-post-id="11"><span class="category-label">자유</span>커뮤니티 테스트 글 11</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 33</span><span class="rec">추천 1</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">33</td><td class="votes-col">1</td></tr><tr class=""><td class="number-col">6</td><td class="title-col"><a href="#post/10" data-post-id="10"><span class="category-label">자유</span>커뮤니티 테스트 글 10</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 34</span><span class="rec">추천 2</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">34</td><td class="votes-col">2</td></tr><tr class=""><td class="number-col">5</td><td class="title-col"><a href="#post/9" data-post-id="9"><span class="category-label">자유</span>커뮤니티 테스트 글 9</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 35</span><span class="rec">추천 0</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">35</td><td class="votes-col">0</td></tr><tr class=""><td class="number-col">4</td><td class="title-col"><a href="#post/8" data-post-id="8"><span class="category-label">자유</span>커뮤니티 테스트 글 8</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 36</span><span class="rec">추천 1</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">36</td><td class="votes-col">1</td></tr><tr class=""><td class="number-col">3</td><td class="title-col"><a href="#post/7" data-post-id="7"><span class="category-label">자유</span>커뮤니티 테스트 글 7</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 37</span><span class="rec">추천 2</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">37</td><td class="votes-col">2</td></tr><tr class=""><td class="number-col">2</td><td class="title-col"><a href="#post/6" data-post-id="6"><span class="category-label">자유</span>커뮤니티 테스트 글 6</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 38</span><span class="rec">추천 0</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">38</td><td class="votes-col">0</td></tr><tr class=""><td class="number-col">1</td><td class="title-col"><a href="#post/5" data-post-id="5"><span class="category-label">자유</span>커뮤니티 테스트 글 5</a><div class="mobile-meta"><span>테스트 사용자</span><span>2026. 11. 05.</span><span class="view-count">조회 39</span><span class="rec">추천 1</span></div></td><td class="author-col">테스트 사용자</td><td class="date-col">2026. 11. 05.</td><td class="views-col">39</td><td class="votes-col">1</td></tr></tbody></table>
+    <div class="board-bottom"><a class="button primary" href="#list">전체글</a><span class="muted small-text">1 / 1 페이지</span><span data-list-write></span></div>
+    <p data-list-context-error class="small-text" role="status" hidden></p>
+    </div><p class="loading" role="status" data-ui="커뮤니티를 불러오는 중입니다.">커뮤니티를 불러오는 중입니다.</p></main>
+  <footer class="guide-footer">
+    <div class="guide-footer-inner">
+      <div class="guide-footer-about"><a class="guide-footer-brand" data-guide href="https://guide.guildwar.win/" data-ui="길드워2 입문 가이드">길드워2 입문 가이드</a><p><span data-ui="시작하기부터 전투, 장비, 파티 플레이까지.">시작하기부터 전투, 장비, 파티 플레이까지.</span><br><span data-ui="플레이어가 만드는 길드워2 가이드입니다.">플레이어가 만드는 길드워2 가이드입니다.</span></p><nav class="guide-footer-languages" aria-label="푸터 언어 선택" data-ui-label="푸터 언어 선택"><a href="/community?lang=ko" data-locale="ko" lang="ko" hreflang="ko">한국어</a><a href="/en/community?lang=en" data-locale="en" lang="en" hreflang="en">English</a></nav><nav class="guide-footer-links" aria-label="하단 메뉴" data-ui-label="하단 메뉴"><a href="#terms" data-ui="이용 안내">이용 안내</a><a href="#licenses" data-ui="오픈소스 고지">오픈소스 고지</a></nav></div>
+      <div><h2 data-ui="제작 · 운영">제작 · 운영</h2><p class="guide-owner-name">DruggedCat</p><p><span data-ui="게임 내 ID">게임 내 ID</span><br><span class="guide-owner-id">motionsilse.5760</span></p></div>
+      <nav class="guide-footer-resources" aria-label="공식 자료" data-ui-label="공식 자료"><h2 data-ui="공식 자료">공식 자료</h2><a href="https://www.guildwars2.com" target="_blank" rel="noopener" data-ui="공식 사이트">공식 사이트</a><a href="https://wiki.guildwars2.com" target="_blank" rel="noopener" data-ui="길드워2 Wiki">길드워2 Wiki</a><a href="https://www.guildwars2.com/en/new-player-guide/" target="_blank" rel="noopener" data-ui="공식 입문 가이드">공식 입문 가이드</a></nav>
+    </div>
+    <div class="guide-footer-bottom"><p data-ui="© 2026 길드워2 입문 가이드">© 2026 길드워2 입문 가이드</p><p data-ui="Guild Wars 2는 ArenaNet LLC의 상표입니다 · 이 사이트는 ArenaNet과 무관합니다">Guild Wars 2는 ArenaNet LLC의 상표입니다 · 이 사이트는 ArenaNet과 무관합니다</p></div>
+  </footer>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
